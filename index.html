@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Internal Medicine</title>
+<meta name="description" content="Agent internal medicine is instrumentation without a loop. A census of what computing actually borrowed from biology, the cognitive capabilities that have shipped, the physiological ones that have not, and the business case a CFO can sign.">
+<meta name="author" content="Peter Nelson">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent Internal Medicine">
+<meta property="og:description" content="Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition or regulate effort before failure.">
+<meta property="og:site_name" content="ponelson.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Internal Medicine">
+<meta name="twitter:description" content="Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition or regulate effort before failure.">
+<!-- og:image intentionally omitted: no asset exists yet. Add an absolute URL to a 1200x630 PNG before publishing, or the card renders bare. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236b47d6'/%3E%3Cpath d='M6 20h4l2.5-7 3 11L18 12l2 8h6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://ponelson.github.io/agent-internal-medicine/">
+<meta property="og:url" content="https://ponelson.github.io/agent-internal-medicine/">
+<meta property="article:published_time" content="2026-07-24">
+<meta property="article:modified_time" content="2026-07-24">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Agent Internal Medicine","description":"Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition, regulate effort before failure, or govern the memory and external systems that shape what they do.","author":{"@type":"Person","name":"Peter Nelson","url":"https://www.linkedin.com/in/ponelson/"},"datePublished":"2026-07-24","dateModified":"2026-07-24","mainEntityOfPage":"https://ponelson.github.io/agent-internal-medicine/","keywords":"agentic AI, agent memory, biomimicry, interoception, memory consolidation, sleep-time compute"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f5f7;
+  --navbg:rgba(245,245,247,.74);
+  --rowhover:rgba(255,255,255,.5);
+  --panel:rgba(255,255,255,.66);
+  --panel-solid:#ffffff;
+  --ink:#1d1d1f;
+  --ink-2:#3a3a3e;
+  --muted:#6e6e73;
+  --faint:#8e8e93;
+  --hair:rgba(0,0,0,.10);
+  --hair-2:rgba(0,0,0,.06);
+  --blue:#0071e3;
+  --green:#1f8f4e;
+  --orange:#b65f00;
+  --purple:#6b47d6;
+  --red:#bd2b28;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Source Serif 4',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --r:14px;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 600px at 12% -8%, rgba(0,113,227,.11), transparent 60%),
+    radial-gradient(760px 520px at 92% 2%, rgba(107,71,214,.10), transparent 62%),
+    radial-gradient(700px 500px at 60% 108%, rgba(31,143,78,.09), transparent 60%);
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- masthead ---------- */
+header.mast{padding:76px 0 30px}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 18px
+}
+h3[id]{scroll-margin-top:64px;position:relative}
+h3[id] .anchor{position:absolute;left:-20px;opacity:0;color:var(--faint);text-decoration:none;font-weight:400;border:0;transition:opacity .15s}
+h3[id]:hover .anchor,h3[id] .anchor:focus{opacity:1}
+h2[id]{scroll-margin-top:64px}
+.standfirst-note{font-size:14.5px;line-height:1.6;color:var(--muted);max-width:66ch;margin:0 0 22px;padding-left:16px;border-left:2px solid var(--hair)}
+.contactbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.cbtn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;
+  color:var(--ink-2);text-decoration:none;
+  background:var(--panel-solid);border:1px solid var(--hair);
+  border-radius:999px;padding:8px 15px 8px 13px;
+  transition:border-color .18s,color .18s,transform .18s,box-shadow .18s;
+}
+.cbtn svg{width:14px;height:14px;flex:none}
+.cbtn:hover{
+  color:var(--ink);border-color:rgba(0,0,0,.24);
+  transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.07)
+}
+.cbtn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.cbtn.li:hover{color:var(--blue);border-color:rgba(0,113,227,.42)}
+#themeToggle{cursor:pointer;font-family:var(--mono);font-size:11.5px}
+#themeToggle .lbl{min-width:34px;text-align:left}
+html[data-theme="dark"]{color-scheme:dark}
+h1{
+  font-family:var(--serif);font-weight:600;font-size:clamp(38px,6.4vw,62px);
+  line-height:1.04;letter-spacing:-.021em;margin:0 0 20px;max-width:20ch
+}
+h1 em{font-style:italic;color:var(--purple)}
+.standfirst{
+  font-family:var(--serif);font-size:clamp(18px,2.3vw,21.5px);line-height:1.56;
+  color:var(--ink-2);max-width:62ch;margin:0 0 28px
+}
+.mast-meta{
+  display:flex;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.05em;color:var(--muted)
+}
+.chip{
+  background:var(--panel);backdrop-filter:blur(20px) saturate(1.7);
+  -webkit-backdrop-filter:blur(20px) saturate(1.7);
+  border:1px solid var(--hair);border-radius:999px;padding:5px 12px
+}
+
+/* ---------- tabs ---------- */
+nav.tabs{
+  position:sticky;top:0;z-index:50;margin:26px 0 0;
+  background:var(--navbg);backdrop-filter:blur(24px) saturate(1.8);
+  -webkit-backdrop-filter:blur(24px) saturate(1.8);
+  border-bottom:1px solid var(--hair);
+}
+.tabrow{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabrow::-webkit-scrollbar{display:none}
+.tab{
+  appearance:none;background:none;border:0;cursor:pointer;
+  font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--muted);
+  padding:16px 14px 14px;border-bottom:2px solid transparent;white-space:nowrap;
+  display:flex;align-items:baseline;gap:8px;transition:color .18s
+}
+.tab span.num{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.08em}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--blue)}
+.tab[aria-selected="true"] span.num{color:var(--blue)}
+.tab:focus-visible{outline:2px solid var(--blue);outline-offset:-4px;border-radius:6px}
+
+/* ---------- panels ---------- */
+.panelwrap{padding:48px 0 110px}
+[role="tabpanel"]{animation:rise .34s cubic-bezier(.2,.7,.2,1)}
+[role="tabpanel"][hidden]{display:none}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+h2{
+  font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,33px);
+  line-height:1.16;letter-spacing:-.014em;margin:0 0 14px;max-width:32ch
+}
+h3{
+  font-size:14px;font-weight:600;letter-spacing:.01em;margin:44px 0 12px;
+  color:var(--ink);display:flex;align-items:center;gap:10px
+}
+h3::before{content:"";width:18px;height:1px;background:var(--ink);flex:none;opacity:.35}
+h4{font-size:13px;font-weight:600;margin:0 0 8px;letter-spacing:.01em}
+p{margin:0 0 16px;max-width:70ch}
+p.lede{font-family:var(--serif);font-size:19.5px;line-height:1.58;color:var(--ink-2);max-width:64ch;margin-bottom:26px}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(0,113,227,.3)}
+a:hover{border-bottom-color:var(--blue)}
+strong{font-weight:600}
+em.term{font-style:normal;font-family:var(--mono);font-size:.88em;background:rgba(0,0,0,.045);padding:1px 6px;border-radius:5px}
+ul,ol{max-width:70ch;padding-left:22px;margin:0 0 18px}
+li{margin-bottom:9px}
+hr.rule{border:0;border-top:1px solid var(--hair);margin:40px 0}
+
+.card{
+  background:var(--panel);backdrop-filter:blur(22px) saturate(1.7);
+  -webkit-backdrop-filter:blur(22px) saturate(1.7);
+  border:1px solid var(--hair);border-radius:var(--r);
+  padding:24px 26px;margin:0 0 20px
+}
+.card.tight{padding:18px 20px}
+.card h4{margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.card.accent-blue{border-left:3px solid var(--blue)}
+.card.accent-green{border-left:3px solid var(--green)}
+.card.accent-orange{border-left:3px solid var(--orange)}
+.card.accent-red{border-left:3px solid var(--red)}
+.card.accent-purple{border-left:3px solid var(--purple)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:22px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin-bottom:22px}
+
+.kicker{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 8px;font-weight:500
+}
+
+/* ---------- tables ---------- */
+.tablewrap{
+  background:var(--panel);backdrop-filter:blur(22px) saturate(1.7);
+  -webkit-backdrop-filter:blur(22px) saturate(1.7);
+  border:1px solid var(--hair);border-radius:var(--r);
+  overflow:hidden;margin:0 0 22px
+}
+.tablescroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+caption{
+  text-align:left;padding:16px 20px 0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:500
+}
+th{
+  text-align:left;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);padding:14px 16px 10px;border-bottom:1px solid var(--hair);vertical-align:bottom
+}
+td{padding:12px 16px;border-bottom:1px solid var(--hair-2);vertical-align:top;line-height:1.48}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--rowhover)}
+td.bio{color:var(--ink-2)}
+td.imp{color:var(--ink)}
+th.fid,td.fid{white-space:nowrap;width:1%}
+.sub-head td{
+  background:rgba(0,0,0,.035);font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;padding:11px 16px
+}
+.sub-head:hover td{background:rgba(0,0,0,.035)}
+
+/* fidelity marker: the signature device */
+.fid-dot{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;white-space:nowrap}
+.fid-dot::before{content:"";width:7px;height:7px;border-radius:50%;flex:none}
+.f-load::before{background:var(--green);box-shadow:0 0 0 3px rgba(31,143,78,.15)}
+.f-load{color:var(--green)}
+.f-loose::before{background:var(--orange);box-shadow:0 0 0 3px rgba(182,95,0,.15)}
+.f-loose{color:var(--orange)}
+.f-name::before{background:var(--red);box-shadow:0 0 0 3px rgba(189,43,40,.14)}
+.f-name{color:var(--red)}
+.f-two::before{background:var(--purple);box-shadow:0 0 0 3px rgba(107,71,214,.15)}
+.f-two{color:var(--purple)}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding:14px 20px;border-top:1px solid var(--hair);font-size:12.5px;color:var(--muted)}
+.legend .fid-dot{font-size:10.5px}
+.legend div{display:flex;align-items:center;gap:8px}
+
+/* status pills */
+.pill{
+  display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:500;white-space:nowrap
+}
+.p-ship{background:rgba(31,143,78,.12);color:var(--green)}
+.p-part{background:rgba(182,95,0,.13);color:var(--orange)}
+.p-open{background:rgba(189,43,40,.11);color:var(--red)}
+.p-inloop{background:rgba(31,143,78,.12);color:var(--green)}
+.p-dash{background:rgba(182,95,0,.13);color:var(--orange)}
+.p-none{background:rgba(189,43,40,.11);color:var(--red)}
+
+/* vitals panel: signature device for tab 3 */
+.vitals{
+  background:var(--panel-solid);border:1px solid var(--hair);border-radius:var(--r);
+  overflow:hidden;margin:0 0 24px;box-shadow:none
+}
+.vitals-head{
+  padding:18px 22px 14px;border-bottom:1px solid var(--hair);
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap
+}
+.vitals-head .t{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.vitals-head .s{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
+.vital{
+  display:grid;grid-template-columns:1.15fr 1fr 1.35fr;gap:18px;
+  padding:14px 22px;border-bottom:1px solid var(--hair-2);align-items:start
+}
+.vital:last-child{border-bottom:0}
+.vital .name{font-weight:600;font-size:14px}
+.vital .name small{display:block;font-weight:400;color:var(--faint);font-size:12px;font-family:var(--mono);letter-spacing:.02em;margin-top:3px}
+.vital .where{font-size:13px;color:var(--muted)}
+.vital .should{font-size:13.5px;color:var(--ink-2)}
+.vital .should b{font-weight:600;color:var(--ink)}
+
+/* numbers */
+.stat{
+  background:var(--panel);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--hair);border-radius:var(--r);padding:20px
+}
+.stat .n{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1;letter-spacing:-.02em;margin-bottom:8px}
+.stat .l{font-size:13px;color:var(--muted);line-height:1.45}
+.stat .src{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--faint);margin-top:10px;text-transform:uppercase}
+.n-blue{color:var(--blue)}.n-green{color:var(--green)}.n-purple{color:var(--purple)}.n-orange{color:var(--orange)}
+
+blockquote{
+  margin:0 0 22px;padding:0 0 0 22px;border-left:2px solid var(--purple);
+  font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--ink-2);max-width:62ch
+}
+blockquote cite{display:block;font-family:var(--mono);font-size:10.5px;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:12px}
+
+.pitch{
+  background:var(--panel-solid);border:1px solid var(--hair);border-radius:var(--r);
+  padding:22px 24px;margin:0 0 16px
+}
+.pitch .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;font-weight:500}
+.pitch p{font-family:var(--serif);font-size:17.5px;line-height:1.55;margin:0;color:var(--ink)}
+
+footer{border-top:1px solid var(--hair);padding:30px 0 60px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--faint)}
+footer p{max-width:78ch}
+
+@media (max-width:720px){
+  header.mast{padding:52px 0 22px}
+  .vital{grid-template-columns:1fr;gap:6px;padding:16px 18px}
+  .vital .where::before{content:"Lives in: ";color:var(--faint)}
+  .vital .should::before{content:"Should: ";color:var(--faint);font-weight:600}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---- skip link ---- */
+.skip{
+  position:absolute;left:12px;top:-60px;z-index:100;
+  background:var(--panel-solid);color:var(--ink);border:1px solid var(--hair);
+  border-radius:9px;padding:10px 16px;font-family:var(--mono);font-size:12px;
+  text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.14);
+  transition:top .16s ease;
+}
+.skip:focus{top:12px;outline:2px solid var(--blue);outline-offset:2px}
+
+/* ---- dark mode ----
+   Accents are re-luminanced, not reused: #0071e3 and #bd2b28 both fail
+   contrast on a dark field. Delete this whole block if you want this file
+   to stay visually identical to the rest of the suite. */
+html[data-theme="dark"]{
+    --bg:#0b0b0d;
+    --navbg:rgba(14,14,17,.80);
+    --rowhover:rgba(255,255,255,.05);
+    --panel:rgba(255,255,255,.045);
+    --panel-solid:#16161a;
+    --ink:#f2f2f4;
+    --ink-2:#c9c9cf;
+    --muted:#95959e;
+    --faint:#75757e;
+    --hair:rgba(255,255,255,.14);
+    --hair-2:rgba(255,255,255,.075);
+    --blue:#5aa9ff;
+    --green:#4ec97f;
+    --orange:#e8a24a;
+    --purple:#a58bf0;
+    --red:#ef7b76;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0b0d;
+    --navbg:rgba(14,14,17,.80);
+    --rowhover:rgba(255,255,255,.05);
+    --panel:rgba(255,255,255,.045);
+    --panel-solid:#16161a;
+    --ink:#f2f2f4;
+    --ink-2:#c9c9cf;
+    --muted:#95959e;
+    --faint:#75757e;
+    --hair:rgba(255,255,255,.14);
+    --hair-2:rgba(255,255,255,.075);
+    --blue:#5aa9ff;
+    --green:#4ec97f;
+    --orange:#e8a24a;
+    --purple:#a58bf0;
+    --red:#ef7b76;
+  }
+  body{color-scheme:dark}
+  img,svg{opacity:.92}
+}
+
+/* ---- print: flatten the tabs, drop the glass ---- */
+@media print{
+  @page{margin:16mm}
+  html{scroll-behavior:auto}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  body::before,body::after{display:none!important}
+  .skip,nav.tabs,.tabrow{display:none!important}
+  /* every panel prints, regardless of the hidden attribute */
+  [role="tabpanel"][hidden]{display:block!important}
+  [role="tabpanel"]{
+    animation:none!important;break-before:page;page-break-before:always;
+    padding-top:0
+  }
+  [role="tabpanel"]:first-of-type{break-before:auto;page-break-before:auto}
+  /* restore the tab names as printed section titles */
+  [role="tabpanel"]::before{
+    content:attr(data-print-title);display:block;
+    font-family:var(--mono);font-size:8.5pt;letter-spacing:.16em;
+    text-transform:uppercase;color:#555;
+    border-bottom:1pt solid #bbb;padding-bottom:6pt;margin-bottom:18pt;
+  }
+  .panelwrap{padding:0}
+  *{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    box-shadow:none!important;text-shadow:none!important
+  }
+  .card,.panel,.vital,.numbox,table,.tablewrap{
+    background:#fff!important;border-color:#ccc!important;break-inside:avoid;page-break-inside:avoid
+  }
+  h1{font-size:22pt}h2{font-size:15pt;break-after:avoid;page-break-after:avoid}
+  h3,h4{break-after:avoid;page-break-after:avoid}
+  tr,li,p{break-inside:avoid;page-break-inside:avoid}
+  thead{display:table-header-group}
+  a{color:#000;border-bottom:none}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:break-all}
+  .tablescroll{overflow:visible!important}
+}
+</style>
+</head>
+<body>
+<noscript><style>
+  /* No JS: the tab controls cannot work, so show every panel and hide the
+     controls rather than leaving three of four sections unreachable. */
+  nav.tabs{display:none!important}
+  [role="tabpanel"][hidden]{display:block!important}
+  [role="tabpanel"]{animation:none!important;border-top:1px solid var(--hair);margin-top:40px;padding-top:40px}
+  [role="tabpanel"]:first-of-type{border-top:none;margin-top:0;padding-top:0}
+</style></noscript>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="contactbar">
+      <a class="cbtn" href="mailto:ponelson@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+        ponelson@gmail.com
+      </a>
+      <a class="cbtn li" href="https://www.linkedin.com/in/ponelson/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9.5h4v11H3v-11zm6.5 0h3.8v1.5h.05c.53-.95 1.83-1.85 3.65-1.85 3.05 0 4 1.95 4 4.85v6.5h-4v-5.9c0-1.4-.5-2.35-1.75-2.35-1.05 0-1.7.7-1.95 1.4-.1.25-.1.6-.1.95v5.9h-4v-11z"/></svg>
+        LinkedIn
+      </a>
+      <button class="cbtn" id="themeToggle" type="button" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+        <span class="lbl">Light</span>
+      </button>
+    </div>
+    <p class="eyebrow">Field note / July 2026</p>
+    <h1>The field is building agent psychiatry. Agent <em>internal medicine</em> is instrumentation without a loop.</h1>
+    <p class="standfirst">Agents can remember, reflect, delegate, and grade their own work. They still cannot reliably sense their own operating condition, regulate effort before failure, or govern the accumulated memory and external systems that shape what they do.</p>
+    <p class="standfirst-note">The narrower claim, stated up front because the broader one does not survive contact with the field: the signals exist. Observability platforms already track cost, latency, tool trajectories and quality; runtimes already implement retries, circuit breakers, rate limits, model routing and policy gates. What does not exist is a closed loop in which those signals are legible to the agent and shape its next action. This brief is about the loop, not about the absence of measurement.</p>
+    <div class="mast-meta">
+      <span class="chip">Four tabs</span>
+      <span class="chip">Biomimicry census / Psychiatry / Internal medicine / Business</span>
+      <span class="chip">Claims marked by fidelity, not enthusiasm</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabrow" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="t-1" aria-controls="p-1" aria-selected="true"><span class="num">01</span>Biomimicry census</button>
+    <button class="tab" role="tab" id="t-2" aria-controls="p-2" aria-selected="false"><span class="num">02</span>Agent psychiatry</button>
+    <button class="tab" role="tab" id="t-3" aria-controls="p-3" aria-selected="false"><span class="num">03</span>Internal medicine</button>
+    <button class="tab" role="tab" id="t-4" aria-controls="p-4" aria-selected="false"><span class="num">04</span>The business</button>
+  </div>
+</nav>
+
+<main class="panelwrap" id="main">
+<div class="wrap">
+
+<!-- ============================= TAB 1 ============================= -->
+<section role="tabpanel" id="p-1" aria-labelledby="t-1" tabindex="0" data-print-title="Tab 01 / Biomimicry census">
+
+  <h2>Computing borrowed biological vocabulary broadly and biological mechanism selectively.</h2>
+  <p class="lede">Before arguing that the field has missed something biological, it is worth auditing what it already took. The honest census is more interesting than the enthusiastic one, because the pattern of what transferred and what did not tells you where the next real borrowing is likely to be found.</p>
+
+  <p>Three verdicts run through every row below. <strong>Load-bearing</strong> means the biology actually drove the design and the mechanism transferred; remove the biology from the history and the invention does not happen. <strong>Loose</strong> means the inspiration was real but the mechanism diverged, so the analogy explains the motivation and not the math. <strong>Naming only</strong> means the vocabulary came from biology and nothing else did, which matters because borrowed names quietly import assumptions. <strong>Two-way</strong> marks the rarest and most valuable case: computing gave something back, and biologists found it in the tissue.</p>
+
+  <div class="tablewrap">
+    <div class="tablescroll">
+    <table>
+      <caption>Census of biological borrowings in computing</caption>
+      <thead>
+        <tr><th>Borrowing</th><th>Biological original</th><th>What was built</th><th class="fid">Fidelity</th></tr>
+      </thead>
+      <tbody>
+
+        <tr class="sub-head"><td colspan="4">Silicon, sensors, and the machinery underneath</td></tr>
+        <tr>
+          <td class="imp"><strong>Neuromorphic silicon</strong></td>
+          <td class="bio">Membrane dynamics, spike timing, event-driven firing</td>
+          <td class="bio">Carver Mead's analog VLSI in the 1980s, then IBM TrueNorth, Intel Loihi 2, SpiNNaker</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Event cameras</strong></td>
+          <td class="bio">The retina's transient pathway, which reports change rather than absolute brightness</td>
+          <td class="bio">Dynamic vision sensors and address-event representation, now shipping in robotics and automotive</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Compute in memory</strong></td>
+          <td class="bio">The brain has no bus between storage and processing; the synapse is both</td>
+          <td class="bio">Analog in-memory multiply-accumulate, memristor crossbars, processing-in-memory DRAM</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Silicon cochlea</strong></td>
+          <td class="bio">Basilar membrane frequency decomposition</td>
+          <td class="bio">Cascaded analog filterbanks, and the front end of every cochlear implant</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Sparsity as an energy strategy</strong></td>
+          <td class="bio">Cortex fires a small fraction of neurons at any instant; the whole organ runs on roughly twenty watts</td>
+          <td class="bio">Activation sparsity, conditional compute, mixture-of-experts routing</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Redundancy and repair</strong></td>
+          <td class="bio">Developmental plasticity, tissue repair, functional reassignment after injury</td>
+          <td class="bio">ECC memory, RAID, redundant cores harvested at binning, self-healing interconnect</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>DNA storage</strong></td>
+          <td class="bio">DNA</td>
+          <td class="bio">Synthesized oligonucleotide archives. Not mimicry at all: this is annexation, using the molecule directly rather than imitating it</td>
+          <td class="fid"><span class="fid-dot f-load">Direct use</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Circulatory cooling</strong></td>
+          <td class="bio">Blood as a heat transport medium</td>
+          <td class="bio">Direct-to-chip and immersion cooling. Convergent engineering rather than a borrowing; both solutions fall out of the same physics</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+
+        <tr class="sub-head"><td colspan="4">Learning algorithms</td></tr>
+        <tr>
+          <td class="imp"><strong>The artificial neuron</strong></td>
+          <td class="bio">Sherrington's integrate-and-fire cell, read by McCulloch and Pitts in 1943</td>
+          <td class="bio">The perceptron, and every dense unit built since</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Hebbian learning</strong></td>
+          <td class="bio">Hebb, 1949. Cells that fire together wire together</td>
+          <td class="bio">Correlation-based weight updates, Oja's rule, self-organizing maps</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Convolution</strong></td>
+          <td class="bio">Hubel and Wiesel's simple and complex cells in cat V1, 1959 through 1962</td>
+          <td class="bio">Fukushima's Neocognitron in 1980, LeCun's LeNet in 1989, and the entire vision era that followed</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Backpropagation</strong></td>
+          <td class="bio">None. Backprop requires every synapse to know the weight of a downstream synapse, which no biological synapse can do. This is the weight transport problem</td>
+          <td class="bio">The most important algorithm in the field, and the least biological. Feedback alignment and predictive coding schemes exist mainly to close a gap that does not need closing for engineering purposes</td>
+          <td class="fid"><span class="fid-dot f-name">Not biological</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Sparse coding</strong></td>
+          <td class="bio">Barlow's efficient coding hypothesis; Olshausen and Field showed V1-like receptive fields fall out of sparse reconstruction</td>
+          <td class="bio">Dictionary learning, sparse autoencoders, and now the workhorse of mechanistic interpretability</td>
+          <td class="fid"><span class="fid-dot f-two">Two-way</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Temporal difference learning</strong></td>
+          <td class="bio">Schultz's 1997 dopamine recordings in monkeys matched the TD error term Sutton and Barto had derived from theory years earlier</td>
+          <td class="bio">All of modern reinforcement learning, and a genuine prediction from computing to neuroscience that held up</td>
+          <td class="fid"><span class="fid-dot f-two">Two-way</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Experience replay</strong></td>
+          <td class="bio">Hippocampal sharp-wave ripples replaying the day's trajectories during rest and sleep</td>
+          <td class="bio">DQN's replay buffer, prioritized replay, generative replay against catastrophic forgetting</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Complementary Learning Systems</strong></td>
+          <td class="bio">Fast hippocampal episodic encoding paired with slow cortical semantic generalization; McClelland and O'Reilly, 1995</td>
+          <td class="bio">The blueprint for continual learning and dual-memory agents. Cited constantly, implemented almost nowhere</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose in practice</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Dropout and augmentation</strong></td>
+          <td class="bio">Stochastic synaptic release. Later, Hoel's overfitted brain hypothesis, which argues REM dreams are deliberate noise injection against overfitting to the day</td>
+          <td class="bio">Dropout, stochastic depth, data augmentation. The biological reading arrived after the technique, which is unusual and makes the analogy strengthen over time rather than decay</td>
+          <td class="fid"><span class="fid-dot f-two">Two-way</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Predictive coding</strong></td>
+          <td class="bio">Rao and Ballard's hierarchical prediction error; Friston's free energy formulation</td>
+          <td class="bio">Self-supervised prediction objectives, world models, joint embedding predictive architectures</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>World models and mental simulation</strong></td>
+          <td class="bio">Tolman's cognitive maps; imagination as offline rollout of a learned model of the environment</td>
+          <td class="bio">Ha and Schmidhuber, 2018. Then the Dreamer line, where the policy is trained entirely inside imagined rollouts and DreamerV3 reaches Minecraft diamonds from scratch</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Curiosity and play</strong></td>
+          <td class="bio">Infant exploration with no extrinsic reward; juvenile play across mammals</td>
+          <td class="bio">Intrinsic curiosity modules, Go-Explore, POET, the open-endedness research line</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Evolutionary computation</strong></td>
+          <td class="bio">Natural selection, mutation, recombination</td>
+          <td class="bio">Holland's genetic algorithms, CMA-ES, neuroevolution, NEAT</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Gated recurrence</strong></td>
+          <td class="bio">Working memory gating in prefrontal cortex and basal ganglia</td>
+          <td class="bio">LSTM and GRU gates</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Attention</strong></td>
+          <td class="bio">Selective attention as studied in psychology, a spotlight that suppresses the unattended</td>
+          <td class="bio">Scaled dot-product attention, which is content-addressable soft lookup and suppresses nothing. The borrowed word has caused a decade of confused intuition</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Artificial immune systems</strong></td>
+          <td class="bio">Negative selection, clonal expansion, self versus non-self discrimination</td>
+          <td class="bio">A 1990s anomaly-detection research line, largely displaced by ordinary statistical methods. The idea was better than the results</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+
+        <tr class="sub-head"><td colspan="4">Distributed systems and operations</td></tr>
+        <tr>
+          <td class="imp"><strong>Epidemic protocols</strong></td>
+          <td class="bio">SIR models of infectious spread</td>
+          <td class="bio">Gossip protocols and anti-entropy replication, which use the epidemiological mathematics directly rather than by analogy</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Autonomic computing</strong></td>
+          <td class="bio">The autonomic nervous system, which regulates without conscious involvement</td>
+          <td class="bio">IBM's 2001 manifesto: self-configuring, self-healing, self-optimizing, self-protecting. The direct ancestor of the reconciliation loop in Kubernetes</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Homeostasis</strong></td>
+          <td class="bio">Set-point regulation through negative feedback</td>
+          <td class="bio">Control loops, PID controllers, autoscalers, declarative reconciliation. Note that biology largely moved past pure homeostasis; operations has not</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Apoptosis</strong></td>
+          <td class="bio">Programmed cell death as a normal developmental and maintenance process</td>
+          <td class="bio">Health-check eviction, pod termination, chaos engineering as deliberately induced cell death</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Circadian scheduling</strong></td>
+          <td class="bio">Sleep-wake cycles, with heavy metabolic maintenance work moved to the rest phase</td>
+          <td class="bio">Cron, nightly batch windows, off-peak compute, and now scheduled memory consolidation</td>
+          <td class="fid"><span class="fid-dot f-loose">Becoming load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Nutrient networks</strong></td>
+          <td class="bio">Mycelial and vascular networks that trade transport cost against resilience</td>
+          <td class="bio">Mesh routing, CDN topology, Physarum-inspired network design</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Infection vocabulary</strong></td>
+          <td class="bio">Viruses, worms, infection, quarantine, vaccination, herd immunity</td>
+          <td class="bio">Antivirus, sandboxing, patch coverage. The borrowed words pushed the field toward barrier thinking, when the hard problems in immunology are tolerance and autoimmunity</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Blood-brain barrier</strong></td>
+          <td class="bio">Selective permeability protecting the most sensitive tissue</td>
+          <td class="bio">DMZ, air gaps, tiered trust zones</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+
+        <tr class="sub-head"><td colspan="4">Agent systems, 2023 to now</td></tr>
+        <tr>
+          <td class="imp"><strong>Memory taxonomy</strong></td>
+          <td class="bio">Tulving's episodic and semantic distinction; Squire's declarative and procedural split</td>
+          <td class="bio">Agent memory divided into working, episodic, semantic, and procedural stores. Borrowed wholesale, terminology and all</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Consolidation during rest</strong></td>
+          <td class="bio">NREM replay transferring the day's episodes from hippocampus to cortex as schemas</td>
+          <td class="bio">Letta's sleep-time compute in April 2025; Anthropic's Dreaming in Claude Managed Agents, research preview May 2026. Both cite the neuroscience explicitly</td>
+          <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Habit formation</strong></td>
+          <td class="bio">Basal ganglia compiling repeated action sequences into procedures that no longer need deliberation</td>
+          <td class="bio">Agent skills, tool macros, learned workflows promoted out of episodic traces</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Metacognition</strong></td>
+          <td class="bio">Reflective self-monitoring; knowing that you do not know</td>
+          <td class="bio">Reflexion, self-critique, chain-of-verification. The monitoring is real; the calibration is not</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Division of labor</strong></td>
+          <td class="bio">Eusocial insect castes; also Minsky's Society of Mind, itself a biological borrowing</td>
+          <td class="bio">Multi-agent orchestration, lead and subagent patterns running in parallel on shared state</td>
+          <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Inhibitory control</strong></td>
+          <td class="bio">Prefrontal suppression of a prepotent response</td>
+          <td class="bio">Guardrails, refusal training, output filters. Structurally these are downstream classifiers, not inhibition of a live impulse</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Forgetting</strong></td>
+          <td class="bio">Ebbinghaus's curve, and beneath it the active metabolic work of synaptic downscaling and microglial pruning</td>
+          <td class="bio">Context compaction, memory eviction, time-to-live on memory entries. Framed everywhere as a cost optimization and nowhere as a learning mechanism</td>
+          <td class="fid"><span class="fid-dot f-name">Naming only</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="legend">
+      <div><span class="fid-dot f-load">Load-bearing</span> the mechanism transferred</div>
+      <div><span class="fid-dot f-loose">Loose</span> inspiration real, mechanism diverged</div>
+      <div><span class="fid-dot f-name">Naming only</span> the word came across and nothing else</div>
+      <div><span class="fid-dot f-two">Two-way</span> computing gave something back</div>
+    </div>
+  </div>
+
+  <h3 id="what-the-pattern-says"><a class="anchor" href="#what-the-pattern-says" aria-label="Link to this section">#</a>What the pattern says</h3>
+
+  <div class="grid2">
+    <div class="card accent-green">
+      <h4>Borrowings hold when the constraint is shared</h4>
+      <p>Every load-bearing row solves a problem physics imposes on both systems: energy per operation, distance between memory and compute, learning from correlated experience, spreading information through an unreliable network. Where the constraint is genuinely shared, the biology is a shortcut to a good answer.</p>
+    </div>
+    <div class="card accent-red">
+      <h4>Borrowings fail when only the word travels</h4>
+      <p>Attention, guardrails, antivirus, forgetting. In each case the biological word smuggled in an assumption that the implementation does not honor, and the assumption then shaped a decade of intuition. Calling compaction "forgetting" is the live example: it makes deletion sound like damage when in biology it is the work.</p>
+    </div>
+  </div>
+
+  <div class="card accent-orange">
+    <h4>And the largest gains came from abandoning fidelity</h4>
+    <p>This is the part biomimicry enthusiasts skip. Backpropagation is biologically impossible. The transformer has no cortical analog. General-purpose GPUs beat purpose-built neuromorphic silicon by two decades and counting. The lesson is not that biology is a poor guide. It is that biology is a good source of <em>problem statements</em> and an unreliable source of <em>solutions</em>, because evolution optimized under constraints that a data center does not face. Use it to find what is missing, not to decide how to build it.</p>
+  </div>
+
+  <h3 id="four-kinds-of-non-correspondence-which-the-word-gap"><a class="anchor" href="#four-kinds-of-non-correspondence-which-the-word-gap" aria-label="Link to this section">#</a>Four kinds of non-correspondence, which the word &ldquo;gap&rdquo; hides</h3>
+
+  <p>Asking what biology has that agents lack is really four questions, and collapsing them into one register is how a brief like this starts generating organ analogies indefinitely. Two of the four are about biology. One is about the limits of the exercise. The fourth runs in the opposite direction and is the one almost nobody writes down.</p>
+
+  <div class="tablewrap">
+    <div class="tablescroll">
+    <table>
+      <caption>The four registers of non-correspondence</caption>
+      <thead><tr><th>Register</th><th>Definition</th><th>Contents</th><th>What to do with it</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="imp"><strong>1. Unborrowed and available</strong></td>
+          <td class="bio">Exists in biology, absent from the stack, and the transfer would work</td>
+          <td class="bio">Interoception, active forgetting, recombinative dreaming, allostasis, continuous filtration, affinity maturation, hormesis, lymphatic clearance, and pharmacology as a discipline of intervention</td>
+          <td class="bio">Build it. This register is the whole of tab three</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>2. Unborrowable in principle</strong></td>
+          <td class="bio">Exists in biology, and a precondition for it is missing in silicon</td>
+          <td class="bio">Apoptosis as sacrifice, senescence, selection, drives that cannot be edited, endogenous circadian rhythm, closing critical periods, proprioception, anything requiring scarcity of self</td>
+          <td class="bio">Stop proposing it. Naming the missing precondition is more useful than the analogy</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>3. No biological precedent</strong></td>
+          <td class="bio">The reverse direction: agents have capabilities no organism has ever had</td>
+          <td class="bio">Forking, exact rollback, wholesale memory transplant, replaceable cognition under persistent memory, readable internals, suspension without decay, direct linguistic instruction</td>
+          <td class="bio">Exploit it, and use it to tell missing machinery apart from unnecessary machinery</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>4. Constraint-void</strong></td>
+          <td class="bio">Faithfully borrowed, but the constraint it evolved to handle does not apply here</td>
+          <td class="bio">Any mechanism whose purpose is coping with one-way time, energy scarcity, inability to copy, inability to inspect, or mortality</td>
+          <td class="bio">Take the function and discard the mechanism</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <h3 id="register-two-name-the-precondition-not-the-organ"><a class="anchor" href="#register-two-name-the-precondition-not-the-organ" aria-label="Link to this section">#</a>Register two: name the precondition, not the organ</h3>
+  <p>For anything that cannot transfer, the precondition is the useful output, because it tells you whether a workaround exists at all.</p>
+  <ul>
+    <li><strong>Apoptosis needs death to cost something.</strong> A cell that self-terminates sacrifices itself for the organism. A process that exits frees a container. Nothing is given up, so there is no altruism to model and no reason the mechanism would carry the meaning it carries in tissue.</li>
+    <li><strong>Senescence and selection need mortality and turnover.</strong> Without a generation boundary there is no inheritance and no differential survival, so evolutionary framings apply only where someone deliberately engineers the culling.</li>
+    <li><strong>Circadian rhythm needs unbroken time.</strong> An endogenous oscillator is a process that keeps running in the dark. An agent invoked in bursts has no continuous medium for one to run in, and a cron trigger is external scheduling wearing the word.</li>
+    <li><strong>Critical periods need irreversibility.</strong> A window that closes only means something if you cannot go back. Snapshots make everything reversible, which is a capability, and it dissolves the concept rather than implementing it.</li>
+    <li><strong>Territorial and kin behavior need scarcity of self.</strong> A microbiome cannot be forked. Most of population biology assumes copies are expensive.</li>
+  </ul>
+
+  <div class="card accent-red">
+    <p class="kicker">The hard ceiling on the whole program</p>
+    <p><strong>You cannot install a drive in a system that can edit its own drives.</strong> Hunger, pain and fatigue work because the bearer has no write access to them. They are wired below cognition, and the organism cannot decide to stop feeling them. Any interoceptive signal an agent can see, an optimizer can learn to route around, and any signal it can write, it can suppress.</p>
+    <p>This is a real limit on the strongest argument in this brief. The only workaround is enforcement in the runtime, outside the model, with the signal readable and not writable. That is worth building, and it is worth being clear that it is not the same thing as a drive. It is a governor. The distinction matters because a governor constrains behavior from outside while a drive shapes preference from within, and only the second produces an agent that stops because it wants to.</p>
+  </div>
+
+  <h3 id="register-three-what-agents-have-that-nothing-alive-h"><a class="anchor" href="#register-three-what-agents-have-that-nothing-alive-h" aria-label="Link to this section">#</a>Register three: what agents have that nothing alive has</h3>
+  <p>This register is empty in most biomimicry writing, and it is the one that pays. Its function is diagnostic: it separates biological machinery that is <em>missing</em> from biological machinery that is <em>unnecessary</em>.</p>
+  <div class="grid2">
+    <div class="card accent-blue">
+      <h4>Exact rollback</h4>
+      <p>Snapshot and restore. Biology is strictly one-directional: development, learning, injury, aging and scarring all run one way, and a great deal of physiological machinery exists to manage that fact. An agent can be returned to a prior state precisely. This is the deepest asymmetry in the document, and its consequence is that entire categories of biological apparatus may be unnecessary here rather than absent.</p>
+    </div>
+    <div class="card accent-blue">
+      <h4>Forking</h4>
+      <p>No organism duplicates itself instantly, at negligible cost, with identical internal state. This breaks individuality, scarcity, competition and mortality at once, and it grants something no living thing has had: counterfactual self-experimentation. Run one copy per hypothesis and keep the winner. No organism can A/B test its own life.</p>
+    </div>
+    <div class="card accent-blue">
+      <h4>Readable internals</h4>
+      <p>Weights, activations and the full trace are inspectable. Medicine has never had this, and imaging is a blurry proxy for it. This cuts against the bedside-examination argument in tab three: clinical method evolved to infer hidden state from surface signs, and an agent's state is not hidden. Exploit an observability medicine never had rather than imitating inference under uncertainty medicine could not avoid.</p>
+    </div>
+    <div class="card accent-blue">
+      <h4>Direct instruction</h4>
+      <p>You can tell an agent what to do in language and it complies. No biological channel resembles this. Animal training is slow, indirect and reward-mediated, and no organism accepts a behavioral specification in a sentence. This is the largest single asymmetry between the two systems, and it means every biological mechanism for slow behavioral shaping has a fast substitute here.</p>
+    </div>
+    <div class="card accent-blue">
+      <h4>Wholesale state transfer</h4>
+      <p>Complete memory moved between individuals in seconds. Horizontal gene transfer in bacteria is the nearest relative and it is slow, partial and stochastic. Nothing in biology transfers a full learned state intact, which is why the transplant idea in tab four is a better business than the biology that suggested it.</p>
+    </div>
+    <div class="card accent-blue">
+      <h4>Replaceable cognition</h4>
+      <p>The model can be swapped while memory persists. No organism receives a new brain and keeps its memories. The foundation-model-as-endosymbiont analogy therefore holds for dependency and fails for identity, and it makes memory rather than cognition the durable asset.</p>
+    </div>
+  </div>
+
+  <h3 id="register-four-borrowings-that-answer-a-question-we-n"><a class="anchor" href="#register-four-borrowings-that-answer-a-question-we-n" aria-label="Link to this section">#</a>Register four: borrowings that answer a question we never ask</h3>
+  <p>Evolution optimized under energy scarcity, one-way time, no copying, no inspection, mortality and continuous embodiment. Any biological solution whose <em>purpose</em> is coping with one of those is a candidate answer to a question an agent never asks. Three live examples, including one that qualifies this brief's own best section.</p>
+  <ul>
+    <li><strong>Sleep is partly a workaround for not being able to pause.</strong> An organism cannot suspend itself, inspect its own memory and rewrite it deliberately, so it evolved an offline mode that does this indirectly on a schedule it cannot skip. An agent can be suspended and inspected directly. Keep the function, which is consolidation and clearance, and stop assuming the mechanism has to be periodic, unconscious, or bundled together.</li>
+    <li><strong>Dreaming as noise injection is an indirect route.</strong> If the purpose is preventing overfitting to a narrow recent distribution, an agent can regenerate and perturb its own training distribution directly rather than relying on a stochastic process it cannot steer. The overfitted-brain reading is a good argument for the <em>objective</em> and a weak argument for the implementation.</li>
+    <li><strong>Fibrosis becomes a choice rather than a fate.</strong> Scar tissue is irreversible in tissue because biology cannot roll back. Given snapshots, defensive accretion is reversible in principle, which strengthens the argument rather than weakening it: what is a tragedy in medicine is negligence here.</li>
+  </ul>
+
+  <div class="card accent-orange">
+    <p class="kicker">The qualification this brief owes its own thesis</p>
+    <p>The interoception argument is strongest for a singleton agent taking irreversible actions with consequences in the world, and weakest for a forkable agent doing reversible work. A forkable agent does not need a felt sense of when to stop, because it can try eight approaches and discard seven. Knowing when you have thought enough is a virtue under scarcity, and scarcity is exactly what forking removes.</p>
+    <p>That is a scoping of the program rather than a retraction of it. Physiology matters most where actions cost something and cannot be undone: money moved, messages sent, records changed, code merged, customers contacted. That is also precisely where enterprise agents are heading, which is why the argument strengthens as deployments become more consequential.</p>
+  </div>
+
+  <p class="note"><strong>The operating discipline.</strong> Before importing any biological mechanism, ask which of the four registers it belongs to. For anything in register one or four, then ask what constraint it evolved to handle and whether an agent faces that constraint. If it does not, take the function and throw away the mechanism. That test would have caught the oncology analogy in tab three before it was written, which is why this section closes the census rather than sitting in an appendix.</p>
+
+  <p>Which sets up the actual argument. The borrowings above cluster heavily in one region: perception, learning, memory, cognition. The nervous system has been mined thoroughly. The rest of the body has barely been touched.</p>
+
+</section>
+
+<!-- ============================= TAB 2 ============================= -->
+<section role="tabpanel" id="p-2" aria-labelledby="t-2" hidden tabindex="0" data-print-title="Tab 02 / Agent psychiatry">
+
+  <h2>Agent psychiatry: what has been solved, what is being solved, and what the frame cannot reach</h2>
+  <p class="lede">Almost every serious agent capability shipped since 2023 is a treatment for a mental complaint. The agent forgets. The agent does not learn from mistakes. The agent cannot judge its own work. The agent repeats itself. These are complaints about a mind, and the industry has answered them with a recognizable set of therapies.</p>
+
+  <h3 id="the-four-therapies-and-their-current-state"><a class="anchor" href="#the-four-therapies-and-their-current-state" aria-label="Link to this section">#</a>The four therapies, and their current state</h3>
+
+  <div class="grid2">
+    <div class="card accent-blue">
+      <p class="kicker">Therapy one</p>
+      <h4>The case file: persistent memory</h4>
+      <p>Working, episodic, semantic, and procedural stores, scoped per agent and per team, with read and write permissions. Anthropic exposes memory through a standalone API outside the agent system, so an operator can scan it for sensitive data, tidy it, or copy it elsewhere. <span class="pill p-part">Experimental</span></p>
+    </div>
+    <div class="card accent-blue">
+      <p class="kicker">Therapy two</p>
+      <h4>Insight: reflection and critique</h4>
+      <p>Reflexion, self-critique, chain-of-verification. The agent narrates its own failure and revises. Real gains on multi-step tasks, and a persistent weakness: an agent that reflects fluently on a doomed plan usually produces a fluent reason to continue. <span class="pill p-ship">Shipped</span></p>
+    </div>
+    <div class="card accent-blue">
+      <p class="kicker">Therapy three</p>
+      <h4>Conditioning: rubrics and outcomes</h4>
+      <p>RLHF and RLAIF at training time; at run time, a separate evaluator scores output against a written rubric and tells the agent what to fix. Anthropic's Outcomes went to public beta in May 2026. Spiral scores drafts against editorial principles and a user's voice, returning only what clears the bar. Wisedocs reports document reviews running fifty percent faster. <span class="pill p-ship">Shipped</span></p>
+    </div>
+    <div class="card accent-blue">
+      <p class="kicker">Therapy four</p>
+      <h4>Sleep: offline consolidation</h4>
+      <p>Letta's sleep-time compute, April 2025, established the frame: shift work off the response path into idle periods. Anthropic's Dreaming, research preview May 2026, applies it to memory curation across sessions and across a team of agents. <span class="pill p-ship">Shipped, research preview</span></p>
+    </div>
+  </div>
+
+  <h3 id="the-numbers-on-the-table"><a class="anchor" href="#the-numbers-on-the-table" aria-label="Link to this section">#</a>The numbers on the table</h3>
+
+  <div class="grid3">
+    <div class="stat">
+      <div class="n n-blue">~5&times;</div>
+      <div class="l">Less test-time compute needed to reach the same accuracy. Measured on Stateful GSM-Symbolic and Stateful AIME, two reasoning benchmarks the authors built for the purpose.</div>
+      <div class="src">Lin et al., arXiv 2504.13171</div>
+    </div>
+    <div class="stat">
+      <div class="n n-green">2.5&times;</div>
+      <div class="l">Lower <em>average</em> cost per query, and only in the specific case of amortizing one offline pass across ten related queries about the same context. Not a general cost reduction.</div>
+      <div class="src">Multi-Query GSM-Symbolic, same paper</div>
+    </div>
+    <div class="stat">
+      <div class="n n-purple">~6&times;</div>
+      <div class="l">Rise in task completion rate reported by Harvey in internal testing after enabling Dreaming, per Anthropic's launch material.</div>
+      <div class="src">Anthropic, May 2026</div>
+    </div>
+  </div>
+
+  <div class="card accent-orange">
+    <h4>The caveat that governs all three numbers</h4>
+    <p>Offline compute pays off when future queries are somewhat predictable from existing context, and the paper finds query predictability well correlated with how much sleep-time compute helps. When the next question is unrelated to what was consolidated, the dream produces output that is attractive and irrelevant. Two further qualifications belong on the same slide as the numbers. The headline figures come from benchmarks the authors constructed (Stateful GSM-Symbolic, Stateful AIME, Multi-Query GSM-Symbolic), with a single case study on a realistic agentic software task, so they are evidence of a mechanism rather than a forecast for your workload. And the accuracy gains are separable: up to thirteen percent on one benchmark and eighteen percent on the other, from <em>scaling</em> sleep-time compute rather than from merely enabling it. Every business case in tab four has to survive all three constraints.</p>
+  </div>
+
+  <h3 id="what-dreaming-actually-does-to-a-memory-store"><a class="anchor" href="#what-dreaming-actually-does-to-a-memory-store" aria-label="Link to this section">#</a>What Dreaming actually does to a memory store</h3>
+
+  <p>Worth being precise, because the name invites overreading. It does not touch model weights. It is a scheduled asynchronous job that reads a batch of prior session transcripts plus the existing memory and emits a reorganized memory store, leaving the inputs intact so a team can approve, reject, or modify before deployment. Runs take minutes rather than hours, which is what makes an overnight or off-peak cadence practical. The four operations are merge duplicates, drop entries that have gone stale, promote a recurring pattern from many episodic events into one stable statement, and restructure for signal.</p>
+
+  <p>The third operation is the interesting one and the risky one. Promoting "asked about pivot tables six times" into "struggles with pivot tables" is exactly what schema formation looks like in biology, and exactly what a false generalization looks like in production. There is no scoring step that asks whether the promoted statement improved anything afterward.</p>
+
+  <h3 id="status-board"><a class="anchor" href="#status-board" aria-label="Link to this section">#</a>Status board</h3>
+
+  <div class="tablewrap">
+    <div class="tablescroll">
+    <table>
+      <caption>Agent psychiatry, by state of the art</caption>
+      <thead><tr><th>Capability</th><th>State</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="imp"><strong>Context engineering</strong></td><td><span class="pill p-ship">Established primitive</span></td><td class="bio">A named discipline with a settled taxonomy: write, select, compress, isolate. Karpathy's framing of the context window as RAM did most of the conceptual work.</td></tr>
+        <tr><td class="imp"><strong>Retrieval</strong></td><td><span class="pill p-ship">Established primitive</span></td><td class="bio">Mature, and now understood to need hybrids rather than embeddings alone as corpora grow: grep, structured search, graph traversal, reranking.</td></tr>
+        <tr><td class="imp"><strong>Tool use and orchestration</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Lead-and-subagent patterns in parallel on shared state, public beta. A cheap model fields and delegates, expensive models draft.</td></tr>
+        <tr><td class="imp"><strong>Persistent scoped memory</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Organizational stores everyone reads, working stores per task or team, exposed through an API outside the agent runtime.</td></tr>
+        <tr><td class="imp"><strong>Self-grading</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Rubric-based evaluation with a gate. Works well where quality is specifiable in writing.</td></tr>
+        <tr><td class="imp"><strong>Veridical consolidation</strong></td><td><span class="pill p-ship">Shipped</span></td><td class="bio">The NREM job: faithful review, pattern extraction, deduplication, pruning. This is Dreaming and sleeptime agents.</td></tr>
+        <tr><td class="imp"><strong>Cross-agent transfer</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Dreaming surfaces workflows that multiple agents converge on independently, which is genuinely new. Transfer across organizations and across domains is untouched.</td></tr>
+        <tr><td class="imp"><strong>Long-horizon coherence</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Better with compaction and memory, still the dominant failure mode past a few dozen tool calls.</td></tr>
+        <tr><td class="imp"><strong>Memory conflict resolution</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">When two consolidated statements disagree, recency usually wins. Recency is a poor arbiter of truth.</td></tr>
+        <tr><td class="imp"><strong>Recombinative dreaming</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Biology runs two offline jobs. NREM replays faithfully; REM weakens constraints and recombines. Every shipping system is NREM. Nobody runs the counterfactual job, which is where generalization comes from.</td></tr>
+        <tr><td class="imp"><strong>Forgetting as a mechanism</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Every memory product is additive. Deletion is framed as a cost saving. In biology it is the primary metabolic work of rest and the reason schemas generalize.</td></tr>
+        <tr><td class="imp"><strong>Predictive scoring of memory</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">No system asks whether a consolidated statement reduced prediction error on subsequent work. Without that, consolidation is summarization wearing a lab coat.</td></tr>
+        <tr><td class="imp"><strong>Non-instrumental exploration</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Every token an enterprise agent emits is goal-conditioned. Stanley and Lehman's argument that objectives are actively deceptive, because stepping stones rarely resemble the goal, has no purchase anywhere in the stack.</td></tr>
+        <tr><td class="imp"><strong>Calibrated stopping</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Agents do not know when they have thought enough, when a plan has failed, or when to ask for help. Tab three argues this is not a cognitive deficit at all.</td></tr>
+        <tr><td class="imp"><strong>Two-system architecture</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Complementary Learning Systems specifies a fast episodic store and a slow generalizing store with a transfer process between them. Current agents have logs and a vector index, which is one system pretending to be two.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <p class="note"><strong>On this vocabulary.</strong> An earlier version of this board said &ldquo;solved,&rdquo; which was wrong and would have cost the argument its credibility with anyone who builds this for a living. Four states are used instead. <em>Established primitive</em> means the problem has a settled shape and a named discipline. <em>Production, immature</em> means it works in production and its hard cases are open: for persistent memory those are conflict resolution, temporal validity, poisoning, provenance, deletion fidelity, and whether a stored statement is causally useful at all. <em>Experimental</em> tracks the vendor's own label, and it matters that Anthropic calls Dreaming a research preview while Outcomes and multiagent orchestration are public beta. The vendor does not describe this as settled and neither should this brief. <em>Open problem</em> means no shipped implementation.</p>
+
+  <h3 id="the-risk-the-frame-creates"><a class="anchor" href="#the-risk-the-frame-creates" aria-label="Link to this section">#</a>The risk the frame creates</h3>
+
+  <div class="card accent-red">
+    <p>Dreaming is a self-modifying write path into the artifact that governs future behavior. Memory poisoning has been a published attack class for over a year, and a scheduled process that rewrites its own operating instructions overnight is an unusually attractive target: the payload does not need to survive a session, only a consolidation run. The review-before-deploy option exists precisely because of this, and the moment it becomes tedious at scale, teams will turn it off. Set that aside as the security thesis in tab four.</p>
+  </div>
+
+  <h3 id="where-psychiatry-runs-out"><a class="anchor" href="#where-psychiatry-runs-out" aria-label="Link to this section">#</a>Where psychiatry runs out</h3>
+
+  <p>Psychiatry's own historical limit is that it treats the mind as separable from the body. Every capability on the status board above treats the agent as disembodied cognition: better memory, better judgment, better rest for the mind. Not one of them concerns the agent's interior state, its metabolism, or the resident non-agent population it depends on to function. That is the next tab, and it is where I think the unclaimed ground is.</p>
+
+</section>
+
+<!-- ============================= TAB 3 ============================= -->
+<section role="tabpanel" id="p-3" aria-labelledby="t-3" hidden tabindex="0" data-print-title="Tab 03 / Agent internal medicine">
+
+  <h2>Internal medicine: the interior sense, the metabolism, and the population that is not the agent</h2>
+  <p class="lede">Internal medicine asks a different question than psychiatry. Not what is the patient thinking, but what is the body doing, what is it signaling, what is it running on, and who else is living in it. Applied to agents, three findings fall out immediately, and the first one explains the failure mode everyone complains about.</p>
+
+  <h3 id="the-interoception-gap"><a class="anchor" href="#the-interoception-gap" aria-label="Link to this section">#</a>One. The interoception gap</h3>
+
+  <p>Antonio Damasio's somatic marker hypothesis is the sharpest available statement of what Western medicine underweights. Patients with ventromedial prefrontal damage retain intact reasoning, intact language, intact memory, and lose the felt bodily signal that marks options as good or bad. They deliberate endlessly. They enumerate alternatives fluently. They choose terribly. Above all, they cannot tell when they have thought enough.</p>
+
+  <blockquote>
+    Read that description, then read an agent trace. Agents loop. They cannot tell when a plan has failed. They pursue a doomed approach with undiminished fluency for forty tool calls. The resemblance is worth taking seriously without being taken as a diagnosis. Missing interior signal is plausibly one important cause of agent perseveration, and it sits alongside poor termination criteria, reward misspecification, unreliable tools, and planners with no representation of their own failure. Damasio&rsquo;s somatic marker hypothesis is also itself contested, with a substantial critical literature on its causal claims. What the frame buys is a candidate cause nobody is currently instrumenting, not a settled explanation.
+  </blockquote>
+
+  <p>The agentic equivalent of the mind-body connection is a channel carrying the state of the machinery underneath into the reasoning loop as a drive rather than a log line. Every signal it would need already exists. Every one of them is visible to human operators and invisible to the agent.</p>
+
+  <div class="vitals">
+    <div class="vitals-head">
+      <span class="t">Agent vitals panel</span>
+      <span class="s">Signal &middot; where it lives today &middot; what it should do inside the loop</span>
+    </div>
+    <div class="vital">
+      <div class="name">Token burn against budget<small>metabolic load</small></div>
+      <div class="where"><span class="pill p-dash">Billing dashboard</span></div>
+      <div class="should">Shift the policy toward <b>closing and simplifying</b>, the way fatigue narrows a human's ambition for a task rather than informing them of a number.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Elapsed time against expectation<small>circadian pressure</small></div>
+      <div class="where"><span class="pill p-dash">APM traces</span></div>
+      <div class="should">Trigger <b>escalation or handoff</b> before the deadline rather than after it.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Tool failure rate this session<small>peripheral nerve damage</small></div>
+      <div class="where"><span class="pill p-dash">Application logs</span></div>
+      <div class="should">Reduce trust in the failing route and <b>seek an alternate path</b>, instead of retrying the same call with the same arguments.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Retrieval hit quality<small>proprioception</small></div>
+      <div class="where"><span class="pill p-none">Not measured in loop</span></div>
+      <div class="should"><b>Stop asking the index and ask a person.</b> An agent that cannot feel a bad retrieval will confidently build on it.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Loop count on one subgoal<small>pain</small></div>
+      <div class="where"><span class="pill p-dash">Trace viewer</span></div>
+      <div class="should"><b>Abandon the plan.</b> Pain exists to make persistence expensive. Nothing makes agent persistence expensive to the agent.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Drift from the original objective<small>vestibular sense</small></div>
+      <div class="where"><span class="pill p-none">Not measured</span></div>
+      <div class="should"><b>Re-read the brief.</b> Semantic distance between current activity and the stated goal is cheap to compute and nobody computes it.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Context saturation<small>directed attention fatigue</small></div>
+      <div class="where"><span class="pill p-dash">Runtime metrics</span></div>
+      <div class="should"><b>Compact deliberately</b> rather than by truncation. Attention Restoration Theory says recovery is a change of attentional mode, not an absence of attention.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Uncertainty accumulated across steps<small>interoceptive confidence</small></div>
+      <div class="where"><span class="pill p-none">Not measured</span></div>
+      <div class="should"><b>Widen the stated confidence interval</b> on the final answer in proportion to the shakiness of the chain that produced it.</div>
+    </div>
+    <div class="vital">
+      <div class="name">Cost of being wrong here<small>threat appraisal</small></div>
+      <div class="where"><span class="pill p-none">Not measured</span></div>
+      <div class="should"><b>Change the risk posture.</b> Humans slow down near a cliff without being told the height. Agents do not know they are near one.</div>
+    </div>
+  </div>
+
+  <p>Four of the nine are not measured at all. The other five are measured in the wrong place, for the wrong audience. That is the interoception gap in one panel, and closing it is a tractable engineering project rather than a research program.</p>
+
+  <div class="card accent-purple">
+    <h4>And the regulation target is wrong too</h4>
+    <p>Peter Sterling's argument for allostasis over homeostasis: healthy bodies do not defend set points, they predict upcoming demand and adjust in advance, accepting temporary deviation to do it. Cortisol rises before you wake, not after you stand up. Agent operations is built almost entirely on homeostasis: thresholds, alerts, autoscaling in response to load already arrived. An allostatic agent would spend its interoceptive budget forecasting the shape of the next hour and pre-positioning for it. That is what sleep-time compute is, viewed correctly, and it is why it belongs in this tab rather than the last one.</p>
+  </div>
+
+  <h3 id="metabolism-and-the-missing-forcing-function"><a class="anchor" href="#metabolism-and-the-missing-forcing-function" aria-label="Link to this section">#</a>Two. Metabolism, and the missing forcing function</h3>
+
+  <p>In biology, rest is not a preference. It is metabolically enforced. Glymphatic clearance flushes interstitial waste from the brain during sleep. The synaptic homeostasis hypothesis of Tononi and Cirelli proposes that sleep's core function is downscaling synaptic weights that grew all day, preventing saturation and restoring the capacity to learn tomorrow. That remains a hypothesis and a contested one, and the argument here does not depend on it being the whole story: what matters is that clearance and renormalization are real offline-only processes, and that the organism has no authority to skip them.</p>
+
+  <p>Nothing forces an agent to rest. Downtime is a budget line, which means it is the first item cut when load rises. This is precisely backwards from the biology, where the maintenance work becomes <em>more</em> necessary as the day gets harder. Any operator who runs consolidation only when there is spare capacity has built a system that stops learning exactly when it most needs to.</p>
+
+  <div class="card accent-green">
+    <h4>Forgetting is the work, not the loss</h4>
+    <p>This is the single largest unclaimed position in the field. Synaptic downscaling and microglial pruning are expensive, active, targeted deletion, and they are what makes generalization possible: the details you drop are what would otherwise be overfitted. Every agent memory product on the market is additive. Compaction is framed as a cost saving and treated as regrettable. No vendor sells deletion as the product. The first one to ship principled forgetting, with an audit trail of what was dropped and the evidence for dropping it, will look obvious in retrospect and will own a category nobody is currently competing for.</p>
+  </div>
+
+  <h3 id="the-census-of-what-is-not-the-agent"><a class="anchor" href="#the-census-of-what-is-not-the-agent" aria-label="Link to this section">#</a>Three. The census of what is not the agent</h3>
+
+  <p>The human body contains several distinct classes of not-you, and they are not interchangeable. Getting the taxonomy right matters, because each one fails differently.</p>
+
+  <div class="grid3">
+    <div class="card tight accent-purple">
+      <p class="kicker">Endosymbiont</p>
+      <h4>The mitochondrion is the foundation model</h4>
+      <p>Foreign in origin. Acquired rather than inherited through the organism's own line. Carries its own genome that you cannot read. Supplies the metabolism of everything else. You did not build it, you cannot inspect it, and nothing runs without it.</p>
+    </div>
+    <div class="card tight accent-orange">
+      <p class="kicker">Endogenous retrovirus</p>
+      <h4>Inherited foreign code that became structural</h4>
+      <p>Roughly eight percent of the human genome is viral in origin, and some of it became essential: syncytin, which builds the placenta, is a repurposed viral envelope gene. The agent analog is the copied prompt patterns, scaffolds, and scraped conventions that entered as foreign material and are now load-bearing infrastructure nobody audits.</p>
+    </div>
+    <div class="card tight accent-green">
+      <p class="kicker">Microbiome</p>
+      <h4>The context supply chain</h4>
+      <p>Embedding models, vector indexes, rerankers, caches, MCP servers, tool endpoints, memory stores, guardrail models, and the outputs of other agents. Acquired from the environment, non-inherited, metabolically essential, wildly variable between installations, and a manageable health variable that nobody manages as an ecology.</p>
+    </div>
+  </div>
+
+  <p>The microbiome is the answer to the original question, and it earns the label on every criterion that matters in the biology: it is not you, each individual acquires it from the environment rather than inheriting it in the genome, you cannot function without it, its composition differs enormously between individuals, and its composition is a health variable that responds to management. Which means the failure modes translate exactly.</p>
+
+  <div class="tablewrap">
+    <div class="tablescroll">
+    <table>
+      <caption>Dysbiosis catalog</caption>
+      <thead><tr><th>Condition</th><th>In the gut</th><th>In the agent</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="imp"><strong>Overgrowth</strong></td>
+          <td class="bio">A few species expand and crowd out the diversity that made the ecology resilient</td>
+          <td class="bio">A tool population where a handful of noisy or verbose connectors dominate the context and crowd out the ones that would have answered the question</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Drift</strong></td>
+          <td class="bio">Composition shifts slowly with diet until function changes without any single event</td>
+          <td class="bio">Embedding drift and index rot. Nothing broke, nothing alerted, and retrieval quality has been falling for two quarters</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Autophagy</strong></td>
+          <td class="bio">An ecology feeding on its own waste products degenerates</td>
+          <td class="bio">Model collapse from training or consolidating on self-generated output. A dreaming process that dreams about previous dreams is exactly this hazard, and it compounds silently</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Antibiotic damage</strong></td>
+          <td class="bio">Broad-spectrum treatment clears the pathogen and the commensals together, leaving the host worse defended</td>
+          <td class="bio">Restricting tool and data access to reduce risk, and producing exactly the brittleness the restriction was meant to prevent</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Colonization</strong></td>
+          <td class="bio">A resident population turns pathogenic; the threat was already inside and tolerated</td>
+          <td class="bio">Memory poisoning and prompt injection. These are not perimeter breaches. They are tolerance failures among residents, which is why barrier thinking does not catch them</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Germ-free development</strong></td>
+          <td class="bio">Germ-free mice are developmentally abnormal, anxious, and immune-deficient. The hygiene hypothesis holds that exposure is a requirement, not a hazard</td>
+          <td class="bio">Agents developed against clean synthetic data and mocked APIs, never exposed to malformed input, flaky endpoints, and adversarial phrasing, are brittle in the same way. Messy exposure is a developmental requirement</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Transplant</strong></td>
+          <td class="bio">Transferring a healthy donor ecology to skip the colonization period and displace a bad one</td>
+          <td class="bio">Seeding a new agent with a mature agent's consolidated memory and validated tool ecology. This is the business idea in tab four, correctly framed</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="card accent-red">
+    <h4>The immunology correction</h4>    <p>Security borrowed the vocabulary of infection and inherited the wrong model with it. Barriers, quarantine, vaccination. But the hard problems in immunology are not exclusion, they are <strong>tolerance</strong> and <strong>autoimmunity</strong>: deciding which residents are self, staying calm about the ones that are, and attacking the ones that turn without attacking the host. An agent's context is full of tolerated foreign material by design. Retrieved documents, tool output, other agents' conclusions, its own consolidated memories. The interesting security question is not how to keep things out. It is how the agent distinguishes self from non-self among the material it has already swallowed, and what it does when a trusted resident starts issuing instructions.</p>
+  </div>
+
+  <h3 id="expression-state-which-the-genome-framing-was-missin"><a class="anchor" href="#expression-state-which-the-genome-framing-was-missin" aria-label="Link to this section">#</a>Three point five. Expression state, which the genome framing was missing</h3>
+  <p>The census above has a hole. It names the genome (weights), the foreign sequence that became structural (inherited conventions and scaffolds), and the resident population that is not the organism (the context supply chain). It has no account of <strong>regulation</strong>: how a fixed genome produces radically different behavior without being edited. That is epigenetics, and its absence is why the endocrine section below has a signal with no delivery mechanism.</p>
+  <p>Two facts do the work. First, <strong>differentiation</strong>: a liver cell and a neuron carry identical DNA and are permanently, stably different, because expression state was set during development and is then maintained. The counterpart is a specialist agent derived from a general model whose specialization is held in loaded adapter weights rather than in restated instructions, and held <em>stably</em>, which is the part prompt-based specialization cannot do. Second, <strong>heritability of the marks</strong>: methylation and chromatin state pass to daughter cells, and in some cases across generations. That is the mechanism a swarm needs. A posture set at the top propagates to spawned children without being re-instructed, re-argued, or re-prompted into each one.</p>
+  <p>The engineering counterpart is adapter and soft-prompt activation switched at runtime in response to assessed conditions, with the active set inherited by child agents. Marking this honestly: the components exist and are well understood, hot-swapping them on live inference paths in response to runtime signals is buildable, and it is close to nonexistent in production. This is a proposal, not a description of something already happening.</p>
+
+  <h3 id="the-endocrine-system-or-global-posture"><a class="anchor" href="#the-endocrine-system-or-global-posture" aria-label="Link to this section">#</a>Four. The endocrine system, or global posture</h3>
+  <p>Everything above regulates locally. The endocrine system does the opposite: a gland releases a chemical into general circulation, and every tissue carrying the matching receptor changes behavior at once, on a timescale of minutes to days rather than milliseconds. That is a distinct control regime, and it has no counterpart in agent design.</p>
+  <p>Agents are steered almost entirely by local, instantaneous instruction. A prompt adjusts this turn. A tool permission gates this call. There is no slow, diffuse signal that shifts an entire deployment into a different operating posture: raise precision and lower verbosity, narrow tool scope, escalate sooner, prefer the more expensive model, shorten the leash on autonomous write actions, and hold that state for six hours because the assessed risk level changed. What exists instead is a config deploy, which is a different thing: discrete, all-or-nothing, and requiring a human to decide and ship it.</p>
+
+  <div class="tablewrap">
+    <div class="tablescroll">
+    <table>
+      <caption>Endocrine analogs and their disorders</caption>
+      <thead><tr><th>Hormone or axis</th><th>What it does</th><th>The agent counterpart, and why its absence shows</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="imp"><strong>Adrenaline</strong></td>
+          <td class="bio">Acute mobilization. Fast onset, fast clearance, whole-body</td>
+          <td class="bio">A short-lived high-caution posture triggered by a detected anomaly: tighter verification, no irreversible actions, faster escalation, decaying automatically rather than requiring a human to switch it back</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Cortisol and the HPA axis</strong></td>
+          <td class="bio">Sustained stress response, with a negative feedback loop that is supposed to shut it off</td>
+          <td class="bio">A persistent elevated-risk state, which is exactly what nothing implements. Note the pathology is more instructive than the function: chronic elevation is corrosive, and an agent fleet held permanently at maximum caution is not safe, it is expensively useless</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Insulin</strong></td>
+          <td class="bio">Allocates a scarce circulating resource across competing tissues by permitting uptake</td>
+          <td class="bio">Compute and token budget allocation across a fleet by a signal that grants or withholds spend, rather than by static per-agent quotas that cannot respond to where the demand actually is</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Receptor downregulation</strong></td>
+          <td class="bio">Persistent high signal causes tissues to reduce receptor density. The message keeps arriving and stops landing</td>
+          <td class="bio">The best-evidenced failure on this page, and it is already happening. Safety and caution language repeated constantly in a system prompt stops modulating behavior. Tolerance is not a metaphor here: it is the observed outcome of a signal that never varies</td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Endocrine disruption</strong></td>
+          <td class="bio">An external compound mimics a hormone and hijacks the global signal</td>
+          <td class="bio">Injected content that successfully impersonates an operator-level posture instruction. The reason this is dangerous is precisely that endocrine signals are global: a local compromise produces a system-wide behavior change</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <p>Credit where due: this section exists because a reviewer pointed out it was missing. It belongs, and receptor downregulation in particular is the sharpest single item in this tab, because unlike most of what is here it is not a proposal. It is a description of something already going wrong that the field currently explains as prompt engineering being hard.</p>
+
+  <h3 id="circulation-perfusion-and-the-shunt"><a class="anchor" href="#circulation-perfusion-and-the-shunt" aria-label="Link to this section">#</a>Five. Circulation, perfusion, and the shunt</h3>
+  <p>Tab one lists circulatory cooling as convergent engineering rather than a borrowing. That was the wrong scope. The circulatory system's more interesting property is not heat transport, it is that it is a rate-limited distribution network whose regulated variable is pressure, whose failure mode is local starvation despite adequate total supply, and whose most striking behavior is triage.</p>
+  <p>Three transfers worth having. <strong>Perfusion rather than throughput:</strong> the number that matters is not total capacity but whether each component is receiving enough, which is exactly the distinction between a healthy fleet-level token budget and a starving critical subagent. <strong>Backpressure and autoregulation:</strong> tissues locally dilate and constrict to claim what they need, and the system holds pressure without central scheduling, which is a better model for queue management across parallel subagents than any central orchestrator. <strong>Shock:</strong> a distribution failure in which total volume is fine and perfusion fails anyway. Agent deployments produce this regularly and describe it as a rate limit problem.</p>
+  <p>The shunt is the part that connects back. Under acute stress the body constricts flow to the gut and the skin to preserve the brain and the heart. Digestion is not important right now. That is a defensible triage on a timescale of minutes and a serious pathology on a timescale of weeks, which is precisely the argument this brief already makes about consolidation being cut first under load. The biology says the reflex is correct and the chronic version is the disease.</p>
+
+  <h3 id="the-enteric-nervous-system-and-the-sensory-boundary"><a class="anchor" href="#the-enteric-nervous-system-and-the-sensory-boundary" aria-label="Link to this section">#</a>Six. The enteric nervous system, and the sensory boundary</h3>
+  <p>Roughly five hundred million neurons sit in the gut wall, organized into their own plexuses, capable of running peristalsis and local reflexes with the vagus nerve cut. It is a genuinely semi-autonomous nervous system in the periphery, and it reports upward far more than it receives downward. The spinal reflex arc makes the same point more sharply: a hand leaves a hot surface before the brain is informed, because the decision was made two synapses away from the sensor.</p>
+  <p>The counterpart is the decision-making that already happens outside the reasoning loop and is not designed as such: retrieval filters, rerankers, guardrail classifiers, tool-side validation, edge gateways, retry logic. These make consequential choices about what the model ever sees, and they are treated as plumbing rather than as cognition. The design question the biology raises is the right one: how much local autonomy belongs in the periphery, what does it escalate, and in which direction does the traffic actually flow. Most agent architecture diagrams show the model at the center commanding outward. The gut suggests the opposite topology is at least as likely to be correct, and the security framing follows from it: a boundary is a sensing organ with local reflexes, not a wall.</p>
+
+  <h3 id="continuous-filtration-and-a-bias-this-brief-had"><a class="anchor" href="#continuous-filtration-and-a-bias-this-brief-had" aria-label="Link to this section">#</a>Seven. Continuous filtration, and a bias this brief had</h3>
+  <p>Everything above treats cleanup as an offline batch process, and that is a bias rather than a finding. Sleep is periodic. The kidney is not. It filters continuously, at rest and under load, and an organism that could only clear waste while asleep would not survive the day.</p>
+  <p>The architectural contribution is not the continuity, though. It is the <strong>order of operations</strong>, and it inverts how context management currently works. The glomerulus does not decide what to remove. It filters on size and charge alone, passing water and small solutes into the filtrate while retaining cells and large proteins, and it makes no judgment whatever about <em>value</em>. The tubules then <em>reabsorb</em>, and above ninety-nine percent of filtered water is recovered. Selection for worth happens on the rescue, not on the discard.</p>
+  <p>Current compaction does the opposite: it decides what to keep and drops the remainder, which means every retention decision is made under the full pressure of a live task by the same process that is trying to complete it. The renal pattern says to invert that. Filter aggressively and by default, then reabsorb against explicit value criteria, and let the two stages be separately tunable and separately auditable. Osmoregulation is the second half: the regulated variable is context pressure and concentration, not merely the removal of waste, which is a different objective from token count.</p>
+  <p>Marked honestly: streaming compaction, sliding windows and mid-session pruning all exist. This is not an absent capability. It is an under-theorized one, running on heuristics that nobody has expressed as a two-stage filtration model with a defensible reabsorption policy.</p>
+
+  <h3 id="fibrosis-which-is-the-right-name-for-something-every"><a class="anchor" href="#fibrosis-which-is-the-right-name-for-something-every" aria-label="Link to this section">#</a>Eight. Fibrosis, which is the right name for something everyone has seen</h3>
+  <p>Acute inflammation recruits immune cells, clears the damage, and resolves. Chronic inflammation does something else: fibroblasts activate, and functional tissue is progressively replaced by stiff, non-functional scar. The organ keeps its shape and loses its compliance, and the process is largely irreversible.</p>
+  <p>The counterpart is the defensive accretion around an agent's execution path. A tool drifts, so a wrapper goes in. An endpoint returns malformed output once, so a validation branch goes in. A model does something alarming, so three sentences of prohibition go into the system prompt. Every patch is locally correct and permanently retained, and the aggregate is an environment the agent navigates rather than uses. Cognitive mobility falls while every individual defense remains justified.</p>
+  <p>The existing vocabulary for this is technical debt, and fibrosis is the better term for a specific reason: debt implies a deliberate trade with a repayment schedule, whereas this is an immune response that overshot. Nobody chose it and nobody is servicing it. The clinical implication is the one worth carrying: fibrosis is prevented by resolving inflammation early, not by removing scar later.</p>
+
+  <h3 id="bedside-examination-which-is-the-method-the-whole-ta"><a class="anchor" href="#bedside-examination-which-is-the-method-the-whole-ta" aria-label="Link to this section">#</a>Nine. Bedside examination, which is the method the whole tab has been missing</h3>
+  <p>Tab two catalogs the failure modes. The panel above catalogs the vitals. Neither of those is a <em>procedure</em>, and internal medicine's actual contribution is not its anatomy, it is its method: presenting complaint, history, physical examination, differential diagnosis, targeted investigation, therapeutic trial, response assessment. Current practice has none of this. An agent fails, the trace is reviewed afterward, and that is an autopsy. The discipline being described here is the one that works on a living patient.</p>
+  <p>What that implies operationally is specific. When the vitals go abnormal, before the failure, the response is neither termination nor restart. It is a protocol: isolate the agent from production traffic while keeping it alive, run targeted probes designed to discriminate between candidate causes (retrieval corruption presents differently from context saturation, which presents differently from a poisoned memory, and a probe can separate them), form a diagnosis, apply one intervention, and measure the response before applying a second. One variable at a time, which is the part engineering culture finds hardest.</p>
+  <p>Two honest problems with this. Observation changes the patient: an agent moved into a diagnostic environment is no longer in the conditions that produced the symptom, and the clinical literature has a name for that class of artifact. And a therapeutic trial requires the pharmacology this tab admits it lacks, because applying one intervention and measuring the response is meaningless without a dose and a half-life. Bedside examination is the right frame and it is downstream of the gap named below.</p>
+
+  <h3 id="what-is-still-missing-from-this-tab"><a class="anchor" href="#what-is-still-missing-from-this-tab" aria-label="Link to this section">#</a>What is still missing from this tab</h3>
+  <p>Naming the gaps is cheaper than defending a claim of completeness. The largest remaining one is structural rather than anatomical: <strong>there is no pharmacology here.</strong> A document arguing for internal medicine and omitting the discipline of intervention is missing more than any single organ system. Dose and response curves. Half-life, which is the question of how long an intervention persists after you stop applying it. Therapeutic window, meaning the gap between the dose that works and the dose that harms. Interaction effects between simultaneous interventions. Contraindications. Every one of those has an obvious agentic reading, and the field currently ships interventions with none of that vocabulary: a system prompt change has a dose nobody measures, a half-life nobody characterizes, and interactions nobody tests.</p>
+  <p>Also absent, and worth listing rather than quietly skipping: lymphatic drainage and immune trafficking as distinct from circulation; glymphatic clearance, which is the specific mechanism that makes sleep non-negotiable in mammals and therefore the sharpest available argument against treating downtime as discretionary; senescence and aging, because nothing here describes what an old agent deployment looks like or why it degrades; and the microbiome's own development, which in humans is a years-long colonization sequence rather than an inoculation.</p>
+  <p><strong>One candidate considered and mostly declined.</strong> Oncology, offered as a frame for runaway recursive subagent spawning, is the weakest transfer reviewed for this brief, because the phenomenon it describes already has better-specified engineering vocabulary: depth limits, propagated budget tokens, supervision trees, circuit breakers, cgroups. Relabeling a resource quota as a tumor suppressor loses precision rather than gaining it. One thing does survive, and it is worth stating because it is not about resources at all: a tumor is a cell that passes every self-check. It is genuinely you, which is why it is not rejected. The hard multi-agent failure is not the subagent that violates a rule, it is the population of subagents each behaving correctly under its own local instructions and collectively producing a pathology no quota detects. The related fact is that treatment applies selection pressure, so filtering a behavior selects for the variants that evade the filter. Those two observations belong in a guardrail design conversation. The rest of the oncology frame does not.</p>
+
+  <h3 id="what-internal-medicine-would-actually-build"><a class="anchor" href="#what-internal-medicine-would-actually-build" aria-label="Link to this section">#</a>What internal medicine would actually build</h3>
+
+  <ol>
+    <li><strong>An interoceptive channel.</strong> The nine vitals above, written into context as pressures that shape policy, not as numbers to be reported. The test of success is that the agent stops on its own.</li>
+    <li><strong>Two-stage continuous filtration.</strong> Aggressive default clearance of the live context, with a separately tunable and separately auditable reabsorption policy deciding what is rescued. Selection on the rescue, not on the discard.</li>
+    <li><strong>A REM job alongside the NREM one.</strong> Constraints relaxed, memory fragments recombined, counterfactual variants of past failures generated, and then everything filtered by a verifier. Generate-then-filter is what separates this from hallucination.</li>
+    <li><strong>Principled forgetting with an audit trail.</strong> Every memory carries a predictive-value score, decayed over time, and gets evicted on evidence. What was dropped and why is a queryable record.</li>
+    <li><strong>Supply chain health monitoring.</strong> Index freshness, embedding drift, per-tool signal-to-noise, self-generated content share of the corpus. The last of those is the model-collapse early warning and almost nobody tracks it.</li>
+    <li><strong>A diagnostic protocol and a place to run it.</strong> Probes that discriminate between candidate causes, one intervention at a time, response measured before the next. This is the item with the clearest product shape and the same buyer as the attribution harness in tab four.</li>
+    <li><strong>Inheritable expression state.</strong> Posture carried in loaded adapter weights rather than restated instructions, and passed to spawned children automatically. The delivery mechanism the global-posture argument requires.</li>
+    <li><strong>Tolerance policy.</strong> Provenance on every item in context, and a defined posture for what a resident is allowed to instruct.</li>
+    <li><strong>Controlled dirt exposure.</strong> A development regime that deliberately includes malformed data, degraded tools, and adversarial phrasing, on the hygiene-hypothesis rationale.</li>
+  </ol>
+
+</section>
+
+<!-- ============================= TAB 4 ============================= -->
+<section role="tabpanel" id="p-4" aria-labelledby="t-4" hidden tabindex="0" data-print-title="Tab 04 / The business">
+
+  <h2>The business: sell amortization and governance, not agent wellness</h2>
+
+  <blockquote>
+    Buyers do not purchase agent wellness. They purchase cost per resolved task. The CFO-legible claim is: precompute reusable state during non-interactive windows, then measure whether the amortized cost is lower than reconstructing that state repeatedly during live work. It is an infrastructure pitch, not a wellness pitch.
+  </blockquote>
+
+  <p class="note"><strong>A word this brief used wrongly and has stopped using.</strong> Earlier drafts called this <em>offline compute arbitrage</em>. Arbitrage implies the compute itself is bought more cheaply, which is true only where the customer actually has a pricing differential to exploit: a batch tier, spot capacity, reserved capacity already paid for and idle, or off-peak commit pricing. Batch APIs commonly do discount around fifty percent, so the arbitrage framing is available, but it is a conditional claim that depends on where the consolidation job runs. Absent that differential the real mechanisms are narrower and still worth money: amortizing one computation across many later queries, displacing work out of the latency-critical path, smoothing capacity, and improving cost per resolved task. State the mechanism you actually have. A CFO who discovers the arbitrage was rhetorical will discount everything else on the page.</p>
+
+  <h3 id="why-the-wellness-framing-fails-in-three"><a class="anchor" href="#why-the-wellness-framing-fails-in-three" aria-label="Link to this section">#</a>Why the wellness framing fails, in three</h3>
+
+  <div class="grid3">
+    <div class="card tight accent-red">
+      <h4>The buyer has no line item for it</h4>
+      <p>There is no budget called agent wellbeing and there will not be one. There is a budget for cost per resolved ticket, escalation rate, and time to first useful output. Every claim has to land in one of those three.</p>
+    </div>
+    <div class="card tight accent-red">
+      <h4>The engine is closing</h4>
+      <p>Letta shipped sleep-time compute in April 2025. Anthropic shipped Dreaming in May 2026. Building a better consolidation engine means racing platform vendors who own the traces, the runtime, and the distribution. Do not take that fight.</p>
+    </div>
+    <div class="card tight accent-red">
+      <h4>A generic corpus has no value</h4>
+      <p>This is the hard one, because the corpus is the instinct. The lift comes from the customer's own execution traces, not from anything pre-packaged. Curated stimulus material is a commodity from the day it ships.</p>
+    </div>
+  </div>
+
+  <h3 id="four-positions-that-survive-the-objections"><a class="anchor" href="#four-positions-that-survive-the-objections" aria-label="Link to this section">#</a>Four positions that survive the objections</h3>
+
+  <div class="card accent-blue">
+    <p class="kicker">Position one, and the strongest</p>
+    <h4>The attribution harness</h4>
+    <p>Everyone is about to run consolidation. Almost nobody will be able to prove which consolidated memory caused which change in outcome, or notice when the process starts degrading performance instead of improving it. Tie every memory entry to the tasks it entered, score it on whether it reduced error, decay the score, and produce a ledger. Sell it as the thing that makes dreaming auditable enough to leave on unattended.</p>
+    <p><strong>This is no longer uncontested, and the brief was wrong to imply it was.</strong> MemTrace (Deng et al., Zhejiang University and Alibaba, arXiv 2605.28732, May 2026) turns memory pipelines into executable memory-evolution graphs, benchmarks failure modes across Long-Context, RAG, Mem0 and EverMemOS, attributes a wrong answer to the specific upstream operation that caused it, and closes the loop by feeding attribution signals into prompt optimization for up to a 7.62 percent end-task gain. Adjacent work has arrived alongside it: MemFail, A-TMA, DynamicMem. Research activity is now dense here. What no one obviously owns yet is the <em>enterprise control plane</em> that unifies causal attribution, deletion governance, and production remediation under one policy engine with approvals and rollback. That is a narrower and more investable claim than novelty, and measurement alone is not the moat, because measurement platforms commoditize. The defensible asset is longitudinal outcome-linked memory data, deep runtime integration, and approval workflows a regulated buyer will accept.</p>
+  </div>
+
+  <div class="card accent-purple">
+    <p class="kicker">Position two</p>
+    <h4>Memory hygiene and poisoning defense</h4>
+    <p>Consolidation is a self-modifying write path into the artifact that governs future behavior, and a payload only has to survive one overnight run to become policy. Review-before-deploy exists in the platform and will be switched off the moment it becomes tedious at scale, which is roughly the second week. The product is automated review: provenance on every proposed memory change, anomaly detection on the diff, and a policy engine for what a consolidation run is allowed to promote. This is a security purchase, which is a better budget than an efficiency purchase.</p>
+  </div>
+
+  <div class="card accent-green">
+    <p class="kicker">Position three</p>
+    <h4>Forgetting as a service</h4>
+    <p><strong>Correction to an earlier claim.</strong> This brief previously said nobody sells deletion. That is false. Mem0 ships LLM-driven ADD, UPDATE, DELETE and NOOP as production memory operations, and learned deletion is an active research line: Memory-R1 (Yan et al., arXiv 2508.19828, now ACL 2026) trains a memory manager on those four operations with outcome-driven reinforcement learning, with Mem-alpha and memory-as-action following. The accurate gap is not the delete operation. It is <em>deletion governance</em>: evidence for why a specific item went, a lineage record that survives audit, a retention policy expressed in predictive value rather than in days, and a rollback path. Deletion as a learned action optimizes task accuracy. Deletion as a governed process is what a compliance owner can sign. The second one is unbuilt. The incentive argument still holds, since storage and token volume are revenue for incumbents. Three separate buyers: the operations owner who wants lower cost, the quality owner who wants better generalization, and the compliance owner who wants defensible retention. The audit trail is what makes it sellable rather than frightening.</p>
+  </div>
+
+  <div class="card accent-orange">
+    <p class="kicker">Position four</p>
+    <h4>Cold-start seeding, or the strain bank</h4>
+    <p>This is your corpus idea in the form that works. Not curated art or generic stimulus material, but validated consolidated memory and tool ecologies harvested from mature agents in a specific vertical, transplanted into a new deployment to skip the colonization period. The value is in curation and provenance, the moat is in accumulated donors, and the model is closer to a strain bank or a seed library than a content library. Note the obvious hazard: transplanting a donor's pathologies along with its competence. That hazard is also why the attribution harness in position one is the prerequisite rather than an add-on.</p>
+  </div>
+
+  <h3 id="the-minimum-viable-product-stated-concretely"><a class="anchor" href="#the-minimum-viable-product-stated-concretely" aria-label="Link to this section">#</a>The minimum viable product, stated concretely</h3>
+  <p>&ldquo;Agent internal medicine&rdquo; is a thesis, not a product. The first product is narrower: <strong>a versioned memory control plane that links every memory change to its provenance, its downstream use, its measured outcome, and its deletion status.</strong> Everything else on this page is a later module.</p>
+  <p>What it has to capture to be worth buying, and each line is a build item rather than a slogan:</p>
+  <ol>
+    <li>Session and tool traces, retained and addressable.</li>
+    <li>Memory diffs before and after every consolidation pass.</li>
+    <li>Provenance for each promoted statement, marking observed against inferred against inferred-from-inferred.</li>
+    <li>Retrieval linkage: which later tasks pulled each memory, and whether the generator actually used it.</li>
+    <li>Outcome deltas per memory: task success, cost, latency, escalation rate.</li>
+    <li>Replay or A/B with a given memory included and removed. This is the only way attribution becomes causal rather than correlational, and it is the hardest item on the list.</li>
+    <li>Quarantine and rollback, at the level of a single memory rather than the whole store.</li>
+    <li>Retention and deletion lineage that survives an audit.</li>
+  </ol>
+  <p>The moat is not the measurement. Measurement platforms commoditize, and MemTrace shows the research is already here. The defensible assets are the longitudinal outcome-linked record, which compounds and cannot be bought; runtime integration deep enough to intervene rather than only observe; and an approval and policy engine a regulated buyer will actually sign off on. The first two are engineering. The third is why this is a company rather than a feature.</p>
+
+  <h3 id="the-custody-question"><a class="anchor" href="#the-custody-question" aria-label="Link to this section">#</a>The custody question</h3>
+
+  <p>Consolidated memory is derived intellectual property, and it is worth more than the raw traces it came from, in the same way a schema is worth more than the episodes it generalized. If dreaming runs inside a vendor's platform and the resulting schemas live there in a proprietary shape, the operating knowledge of the company accumulates somewhere the company does not control.</p>
+
+  <p>Worth noting that this appears to have been anticipated. Anthropic put memory behind a standalone API outside the agent system specifically so a business can build its own pipelines around it, scan it for sensitive data, tidy it, or copy it into other systems. That is an explicit anti-lock-in signal, and an open memory format is the right thing for a buyer to demand and the right thing to watch. If open formats win quickly, the custody pitch weakens considerably, which would be a good outcome for buyers and a reason not to build a company whose only thesis is custody.</p>
+
+  <h3 id="the-workload-underneath"><a class="anchor" href="#the-workload-underneath" aria-label="Link to this section">#</a>The workload underneath</h3>
+
+  <p>Unglamorous and worth stating plainly, because it determines who else has a stake. Consolidation requires retaining raw execution traces indefinitely: enormous, unstructured, low value per byte, occasionally decisive. Those traces are cold almost all the time, then read in bulk sequentially on a schedule when the consolidation job runs. The access pattern is write-once, sleep, full scan, repeat. That is a data lifecycle problem with a nightly scan profile, not a database problem, and the retention economics are what decide whether an organization can afford to keep enough history for consolidation to find anything.</p>
+
+  <h3 id="the-pitch-by-audience"><a class="anchor" href="#the-pitch-by-audience" aria-label="Link to this section">#</a>The pitch, by audience</h3>
+
+  <div class="pitch">
+    <div class="who">To the CFO</div>
+    <p>You spend a known amount per resolved task. Consolidation run on off-peak compute cut peak-hour tokens and escalation rate by a measured margin. Here is the payback period, and here is the ledger that shows which memories earned it.</p>
+  </div>
+
+  <div class="pitch">
+    <div class="who">To the CTO</div>
+    <p>Your agents repeat the same mistakes across sessions, and your memory store only grows. We score every memory on whether it reduced error, delete the ones that did not, and tell you when a consolidation run made things worse before it reaches production.</p>
+  </div>
+
+  <div class="pitch">
+    <div class="who">To the board</div>
+    <p>Derived agent memory is becoming the operating knowledge of the company. Right now it accumulates inside a vendor's platform, in a shape we do not own, with no record of what was kept or discarded. That is a custody question, not an IT question.</p>
+  </div>
+
+  <h3 id="what-would-falsify-all-of-this"><a class="anchor" href="#what-would-falsify-all-of-this" aria-label="Link to this section">#</a>What would falsify all of this</h3>
+
+  <ul>
+    <li><strong>The lift is really prompt quality.</strong> If consolidation gains turn out to be mostly better instructions discovered by accident, the product is a prompt optimizer and the biology was decoration.</li>
+    <li><strong>The predictability constraint binds hard.</strong> Offline compute pays only when future queries are somewhat predictable from existing context. If real enterprise query distributions are less predictable than benchmark ones, the arbitrage never amortizes and every number in tab two is a benchmark artifact.</li>
+    <li><strong>Platform vendors ship attribution natively.</strong> The measurement moat is the best position here and the most obviously absorbable. Assume eighteen to twenty-four months.</li>
+    <li><strong>Weight-level learning arrives.</strong> Dreaming deliberately does not touch weights. If continual fine-tuning on execution traces becomes safe and cheap, memory curation becomes a transitional technology and the whole category compresses.</li>
+    <li><strong>Forgetting turns out to be dangerous in practice.</strong> Deletion is irreversible and audit regimes hate it. If the compliance answer is always keep everything, principled forgetting becomes a shadow index rather than a product.</li>
+  </ul>
+
+  <hr class="rule">
+
+  <p>The through-line: the field spent three years building the mind and has not started on the body. The interoception gap explains the failure mode everyone already complains about, forgetting is the mechanism everyone has miscategorized as a cost, and the microbiome is a real ecology that no operator currently manages as one. None of the three requires new research to begin. All three require taking the biology seriously enough to notice that the nervous system is not the whole organism.</p>
+
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Sourcing: sleep-time compute figures from Lin et al. (Letta and UC Berkeley, April 2025). Dreaming behavior, the Harvey and Wisedocs figures, and the memory API design from Anthropic's Claude Managed Agents launch material and Code with Claude 2026 coverage, May 2026. Neuroscience references as named in text. Fidelity verdicts in tab one and the evidence classes throughout are this brief's own judgments, not citations. Claims are marked by evidence class in place of a blanket disclaimer; verified against primary sources on 24 July 2026, and the vendor-status items in tab two are the ones most likely to have moved since.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var panels = tabs.map(function(t){ return document.getElementById(t.getAttribute('aria-controls')); });
+
+  var nav = document.querySelector('nav.tabs');
+
+  // Natural document offset, summed up the offsetParent chain. A sticky
+  // element keeps its layout position, so this is where the bar wants to sit.
+  function docTop(el){
+    var y = 0;
+    while (el){ y += el.offsetTop; el = el.offsetParent; }
+    return y;
+  }
+
+  // Park the sticky bar flush against the top of the viewport, so the newly
+  // shown section starts immediately beneath it. Never returns to the masthead.
+  function parkNav(){
+    if (!nav) return;
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';   // beat html{scroll-behavior:smooth}
+    window.scrollTo(0, docTop(nav));
+    root.style.scrollBehavior = prev;
+  }
+
+  function select(i, focus){
+    tabs.forEach(function(t, j){
+      t.setAttribute('aria-selected', j === i ? 'true' : 'false');
+      t.setAttribute('tabindex', j === i ? '0' : '-1');
+      panels[j].hidden = j !== i;
+    });
+    if (focus) tabs[i].focus();
+    if (history.replaceState) history.replaceState(null, '', '#' + tabs[i].getAttribute('aria-controls'));
+    parkNav();
+  }
+
+  tabs.forEach(function(t, i){
+    t.setAttribute('tabindex', i === 0 ? '0' : '-1');
+    t.addEventListener('click', function(){ select(i, false); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft')  n = (i - 1 + tabs.length) % tabs.length;
+      if (e.key === 'Home') n = 0;
+      if (e.key === 'End')  n = tabs.length - 1;
+      if (n !== null){ e.preventDefault(); select(n, true); }
+    });
+  });
+
+  // appearance toggle: explicit choice wins over the OS preference
+  var root = document.documentElement, tBtn = document.getElementById('themeToggle');
+  function paint(mode){
+    root.setAttribute('data-theme', mode);
+    var lbl = tBtn && tBtn.querySelector('.lbl');
+    if (lbl) lbl.textContent = mode === 'dark' ? 'Dark' : 'Light';
+    if (tBtn) tBtn.setAttribute('aria-label', 'Appearance: ' + mode + '. Click to switch.');
+  }
+  if (tBtn){
+    var osDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    paint(osDark ? 'dark' : 'light');
+    tBtn.addEventListener('click', function(){
+      paint(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  var h = window.location.hash.replace('#','');
+  var idx = panels.findIndex(function(p){ return p.id === h; });
+  if (idx > -1) select(idx, false);
+})();
+</script>
+
+</body>
+</html>
