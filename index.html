@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Internal Medicine</title>
+<title>Agent Internal Medicine v2.0 — instrumentation without a loop</title>
 <meta name="description" content="Agent internal medicine is instrumentation without a loop. A census of what computing actually borrowed from biology, the cognitive capabilities that have shipped, the physiological ones that have not, and the business case a CFO can sign.">
 <meta name="author" content="Peter Nelson">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Agent Internal Medicine">
+<meta property="og:title" content="Agent Internal Medicine v2.0">
 <meta property="og:description" content="Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition or regulate effort before failure.">
 <meta property="og:site_name" content="ponelson.github.io">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Agent Internal Medicine">
+<meta name="twitter:title" content="Agent Internal Medicine v2.0">
 <meta name="twitter:description" content="Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition or regulate effort before failure.">
 <!-- og:image intentionally omitted: no asset exists yet. Add an absolute URL to a 1200x630 PNG before publishing, or the card renders bare. -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236b47d6'/%3E%3Cpath d='M6 20h4l2.5-7 3 11L18 12l2 8h6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="canonical" href="https://ponelson.github.io/agent-internal-medicine/">
 <meta property="og:url" content="https://ponelson.github.io/agent-internal-medicine/">
 <meta property="article:published_time" content="2026-07-24">
-<meta property="article:modified_time" content="2026-07-24">
+<meta property="article:modified_time" content="2026-10-19">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Agent Internal Medicine","description":"Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition, regulate effort before failure, or govern the memory and external systems that shape what they do.","author":{"@type":"Person","name":"Peter Nelson","url":"https://www.linkedin.com/in/ponelson/"},"datePublished":"2026-07-24","dateModified":"2026-07-24","mainEntityOfPage":"https://ponelson.github.io/agent-internal-medicine/","keywords":"agentic AI, agent memory, biomimicry, interoception, memory consolidation, sleep-time compute"}
+{"@context":"https://schema.org","@type":"Article","headline":"Agent Internal Medicine","description":"Agents can remember, reflect, delegate and grade their own work. They still cannot sense their own operating condition, regulate effort before failure, or govern the memory and external systems that shape what they do.","author":{"@type":"Person","name":"Peter Nelson","url":"https://www.linkedin.com/in/ponelson/"},"datePublished":"2026-07-24","dateModified":"2026-10-19","mainEntityOfPage":"https://ponelson.github.io/agent-internal-medicine/","keywords":"agentic AI, agent memory, biomimicry, interoception, memory consolidation, sleep-time compute"}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,10 +153,10 @@ h3::before{content:"";width:18px;height:1px;background:var(--ink);flex:none;opac
 h4{font-size:13px;font-weight:600;margin:0 0 8px;letter-spacing:.01em}
 p{margin:0 0 16px;max-width:70ch}
 p.lede{font-family:var(--serif);font-size:19.5px;line-height:1.58;color:var(--ink-2);max-width:64ch;margin-bottom:26px}
-a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(0,113,227,.3)}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--blue) 30%,transparent)}
 a:hover{border-bottom-color:var(--blue)}
 strong{font-weight:600}
-em.term{font-style:normal;font-family:var(--mono);font-size:.88em;background:rgba(0,0,0,.045);padding:1px 6px;border-radius:5px}
+em.term{font-style:normal;font-family:var(--mono);font-size:.88em;background:color-mix(in srgb,var(--ink) 6%,transparent);padding:1px 6px;border-radius:5px}
 ul,ol{max-width:70ch;padding-left:22px;margin:0 0 18px}
 li{margin-bottom:9px}
 hr.rule{border:0;border-top:1px solid var(--hair);margin:40px 0}
@@ -208,21 +208,21 @@ td.bio{color:var(--ink-2)}
 td.imp{color:var(--ink)}
 th.fid,td.fid{white-space:nowrap;width:1%}
 .sub-head td{
-  background:rgba(0,0,0,.035);font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  background:color-mix(in srgb,var(--ink) 4%,transparent);font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--muted);font-weight:500;padding:11px 16px
 }
-.sub-head:hover td{background:rgba(0,0,0,.035)}
+.sub-head:hover td{background:color-mix(in srgb,var(--ink) 4%,transparent)}
 
 /* fidelity marker: the signature device */
 .fid-dot{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;white-space:nowrap}
 .fid-dot::before{content:"";width:7px;height:7px;border-radius:50%;flex:none}
-.f-load::before{background:var(--green);box-shadow:0 0 0 3px rgba(31,143,78,.15)}
+.f-load::before{background:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 18%,transparent)}
 .f-load{color:var(--green)}
-.f-loose::before{background:var(--orange);box-shadow:0 0 0 3px rgba(182,95,0,.15)}
+.f-loose::before{background:var(--orange);box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 18%,transparent)}
 .f-loose{color:var(--orange)}
-.f-name::before{background:var(--red);box-shadow:0 0 0 3px rgba(189,43,40,.14)}
+.f-name::before{background:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 17%,transparent)}
 .f-name{color:var(--red)}
-.f-two::before{background:var(--purple);box-shadow:0 0 0 3px rgba(107,71,214,.15)}
+.f-two::before{background:var(--purple);box-shadow:0 0 0 3px color-mix(in srgb,var(--purple) 18%,transparent)}
 .f-two{color:var(--purple)}
 
 .legend{display:flex;flex-wrap:wrap;gap:16px;padding:14px 20px;border-top:1px solid var(--hair);font-size:12.5px;color:var(--muted)}
@@ -234,12 +234,12 @@ th.fid,td.fid{white-space:nowrap;width:1%}
   display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
   text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:500;white-space:nowrap
 }
-.p-ship{background:rgba(31,143,78,.12);color:var(--green)}
-.p-part{background:rgba(182,95,0,.13);color:var(--orange)}
-.p-open{background:rgba(189,43,40,.11);color:var(--red)}
-.p-inloop{background:rgba(31,143,78,.12);color:var(--green)}
-.p-dash{background:rgba(182,95,0,.13);color:var(--orange)}
-.p-none{background:rgba(189,43,40,.11);color:var(--red)}
+.p-ship{background:color-mix(in srgb,var(--green) 13%,transparent);color:var(--green)}
+.p-part{background:color-mix(in srgb,var(--orange) 14%,transparent);color:var(--orange)}
+.p-open{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
+.p-inloop{background:color-mix(in srgb,var(--green) 13%,transparent);color:var(--green)}
+.p-dash{background:color-mix(in srgb,var(--orange) 14%,transparent);color:var(--orange)}
+.p-none{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
 
 /* vitals panel: signature device for tab 3 */
 .vitals{
@@ -300,6 +300,15 @@ footer p{max-width:78ch}
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* ---- v2.0 additions: tokens only, no literal colors ---- */
+.p-research{background:color-mix(in srgb,var(--purple) 13%,transparent);color:var(--purple)}
+.vtag{margin-left:auto;align-self:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--faint);white-space:nowrap;padding-left:14px}
+.revnote{background:var(--panel);border:1px solid var(--hair);border-left:3px solid var(--purple);border-radius:var(--r);padding:16px 20px;margin:0 0 24px;max-width:78ch}
+.revnote .kicker{color:var(--purple)}
+.revnote p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0}
+.upd{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);border:1px solid color-mix(in srgb,var(--purple) 40%,transparent);border-radius:4px;padding:1px 6px;margin-right:7px;vertical-align:1px;white-space:nowrap}
+footer .verstamp{margin-top:14px;color:var(--muted)}
 
 /* ---- skip link ---- */
 .skip{
@@ -382,7 +391,7 @@ html[data-theme="dark"]{
     backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
     box-shadow:none!important;text-shadow:none!important
   }
-  .card,.panel,.vital,.numbox,table,.tablewrap{
+  .card,.panel,.vital,.numbox,table,.tablewrap,.revnote{
     background:#fff!important;border-color:#ccc!important;break-inside:avoid;page-break-inside:avoid
   }
   h1{font-size:22pt}h2{font-size:15pt;break-after:avoid;page-break-after:avoid}
@@ -423,14 +432,19 @@ html[data-theme="dark"]{
         <span class="lbl">Light</span>
       </button>
     </div>
-    <p class="eyebrow">Field note / July 2026</p>
+    <p class="eyebrow">Field note / <b>v2.0</b> · 19 October 2026, 12:32 AM ET · build 2026-10-19T00:32-04:00</p>
     <h1>The field is building agent psychiatry. Agent <em>internal medicine</em> is instrumentation without a loop.</h1>
     <p class="standfirst">Agents can remember, reflect, delegate, and grade their own work. They still cannot reliably sense their own operating condition, regulate effort before failure, or govern the accumulated memory and external systems that shape what they do.</p>
-    <p class="standfirst-note">The narrower claim, stated up front because the broader one does not survive contact with the field: the signals exist. Observability platforms already track cost, latency, tool trajectories and quality; runtimes already implement retries, circuit breakers, rate limits, model routing and policy gates. What does not exist is a closed loop in which those signals are legible to the agent and shape its next action. This brief is about the loop, not about the absence of measurement.</p>
+    <p class="standfirst-note">The narrower claim, stated up front because the broader one does not survive contact with the field: the signals exist. Observability platforms already track cost, latency, tool trajectories and quality; runtimes already implement retries, circuit breakers, rate limits, model routing and policy gates. What barely exists is a closed loop in which those signals are legible to the agent and shape its next action. It has closed for exactly two of them, remaining tokens and remaining context, in one vendor&rsquo;s API, and the evidence from those two is the best support this brief has received. This brief is about the loop, not about the absence of measurement.</p>
+    <div class="revnote">
+      <p class="kicker">Revision note · v2.0 · October 2026</p>
+      <p>Three months on, the argument holds and its evidence moved. Two of the nine vital signs in tab three already reach the reasoning loop, as token-budget and context-window countdowns the model reads and paces against; the July version missed both, and they are the first direct evidence that a readable signal changes agent policy. Research published since May shows repeated consolidation can push memory below the no-memory baseline, which turns measuring consolidation (tab four, position one) from a refinement into a requirement. Dreaming is still a research preview, but its API now offers an in-place mode that skips review, and the memory-poisoning literature has become dense enough to price the risk. Passages that changed carry a dated marker.</p>
+    </div>
     <div class="mast-meta">
       <span class="chip">Four tabs</span>
       <span class="chip">Biomimicry census / Psychiatry / Internal medicine / Business</span>
       <span class="chip">Claims marked by fidelity, not enthusiasm</span>
+      <span class="chip">v2.0 · revised October 2026</span>
     </div>
   </div>
 </header>
@@ -441,6 +455,7 @@ html[data-theme="dark"]{
     <button class="tab" role="tab" id="t-2" aria-controls="p-2" aria-selected="false"><span class="num">02</span>Agent psychiatry</button>
     <button class="tab" role="tab" id="t-3" aria-controls="p-3" aria-selected="false"><span class="num">03</span>Internal medicine</button>
     <button class="tab" role="tab" id="t-4" aria-controls="p-4" aria-selected="false"><span class="num">04</span>The business</button>
+    <span class="vtag" aria-hidden="true">v2.0</span>
   </div>
 </nav>
 
@@ -622,7 +637,7 @@ html[data-theme="dark"]{
         <tr>
           <td class="imp"><strong>Autonomic computing</strong></td>
           <td class="bio">The autonomic nervous system, which regulates without conscious involvement</td>
-          <td class="bio">IBM's 2001 manifesto: self-configuring, self-healing, self-optimizing, self-protecting. The direct ancestor of the reconciliation loop in Kubernetes</td>
+          <td class="bio">IBM's 2001 manifesto: self-configuring, self-healing, self-optimizing, self-protecting. The direct ancestor of the reconciliation loop in Kubernetes (open source)</td>
           <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
         </tr>
         <tr>
@@ -672,7 +687,7 @@ html[data-theme="dark"]{
         <tr>
           <td class="imp"><strong>Consolidation during rest</strong></td>
           <td class="bio">NREM replay transferring the day's episodes from hippocampus to cortex as schemas</td>
-          <td class="bio">Letta's sleep-time compute in April 2025; Anthropic's Dreaming in Claude Managed Agents, research preview May 2026. Both cite the neuroscience explicitly</td>
+          <td class="bio">Sleep-time compute from Letta (open source), April 2025; Anthropic's Dreaming in Claude Managed Agents, research preview since May 2026 and still in preview in October; dreaming with lineage tracking in MindMemOS (open source), August 2026. The first two cite the neuroscience explicitly</td>
           <td class="fid"><span class="fid-dot f-load">Load-bearing</span></td>
         </tr>
         <tr>
@@ -686,6 +701,12 @@ html[data-theme="dark"]{
           <td class="bio">Reflective self-monitoring; knowing that you do not know</td>
           <td class="bio">Reflexion, self-critique, chain-of-verification. The monitoring is real; the calibration is not</td>
           <td class="fid"><span class="fid-dot f-loose">Loose</span></td>
+        </tr>
+        <tr>
+          <td class="imp"><strong>Budget and context awareness</strong><br><span class="upd">Added Oct 2026</span></td>
+          <td class="bio">Interoception: afferent signals about the body's own state that shape behavior without being reasoned about</td>
+          <td class="bio">A server-injected count of remaining tokens or context that the model reads and paces against: context awareness on several Claude models since September 2025, task budgets in beta since April 2026. Neither cites physiology. Both reached the same answer from the same constraint, a finite budget spent by the system that has to ration it</td>
+          <td class="fid"><span class="fid-dot f-load">Convergent</span></td>
         </tr>
         <tr>
           <td class="imp"><strong>Division of labor</strong></td>
@@ -747,7 +768,7 @@ html[data-theme="dark"]{
         <tr>
           <td class="imp"><strong>1. Unborrowed and available</strong></td>
           <td class="bio">Exists in biology, absent from the stack, and the transfer would work</td>
-          <td class="bio">Interoception, active forgetting, recombinative dreaming, allostasis, continuous filtration, affinity maturation, hormesis, lymphatic clearance, and pharmacology as a discipline of intervention</td>
+          <td class="bio">Interoception (two signals now built, under other names), active forgetting, recombinative dreaming (first research results, nothing shipped), allostasis, continuous filtration, affinity maturation, hormesis, lymphatic clearance, and pharmacology as a discipline of intervention</td>
           <td class="bio">Build it. This register is the whole of tab three</td>
         </tr>
         <tr>
@@ -787,6 +808,7 @@ html[data-theme="dark"]{
     <p class="kicker">The hard ceiling on the whole program</p>
     <p><strong>You cannot install a drive in a system that can edit its own drives.</strong> Hunger, pain and fatigue work because the bearer has no write access to them. They are wired below cognition, and the organism cannot decide to stop feeling them. Any interoceptive signal an agent can see, an optimizer can learn to route around, and any signal it can write, it can suppress.</p>
     <p>This is a real limit on the strongest argument in this brief. The only workaround is enforcement in the runtime, outside the model, with the signal readable and not writable. That is worth building, and it is worth being clear that it is not the same thing as a drive. It is a governor. The distinction matters because a governor constrains behavior from outside while a drive shapes preference from within, and only the second produces an agent that stops because it wants to.</p>
+    <p><span class="upd">Oct 2026</span>Both halves of that distinction have since shipped, separately, in one platform. Task budgets are a countdown injected by the server that the model reads and cannot write, and the model acts on it without instructions: it paces itself, finishes gracefully, and, per the vendor&rsquo;s own documentation, may decline a task or scope it down when the budget is plainly too small. Session budgets in Claude Managed Agents are a hard spend cap that pauses the session. The first is the nearest thing to a drive that exists, because it shapes preference rather than forbidding action; the second is a governor. The ceiling stands, since the budget is advisory and the model can exceed it, but the workaround this card described is no longer hypothetical.</p>
   </div>
 
   <h3 id="register-three-what-agents-have-that-nothing-alive-h"><a class="anchor" href="#register-three-what-agents-have-that-nothing-alive-h" aria-label="Link to this section">#</a>Register three: what agents have that nothing alive has</h3>
@@ -850,7 +872,7 @@ html[data-theme="dark"]{
     <div class="card accent-blue">
       <p class="kicker">Therapy one</p>
       <h4>The case file: persistent memory</h4>
-      <p>Working, episodic, semantic, and procedural stores, scoped per agent and per team, with read and write permissions. Anthropic exposes memory through a standalone API outside the agent system, so an operator can scan it for sensitive data, tidy it, or copy it elsewhere. <span class="pill p-part">Experimental</span></p>
+      <p>Working, episodic, semantic, and procedural stores, scoped per agent and per team, with read and write permissions. Anthropic exposes memory through a standalone API outside the agent system, so an operator can scan it for sensitive data, tidy it, or copy it elsewhere. <span class="pill p-part">Public beta</span></p>
     </div>
     <div class="card accent-blue">
       <p class="kicker">Therapy two</p>
@@ -865,7 +887,7 @@ html[data-theme="dark"]{
     <div class="card accent-blue">
       <p class="kicker">Therapy four</p>
       <h4>Sleep: offline consolidation</h4>
-      <p>Letta's sleep-time compute, April 2025, established the frame: shift work off the response path into idle periods. Anthropic's Dreaming, research preview May 2026, applies it to memory curation across sessions and across a team of agents. <span class="pill p-ship">Shipped, research preview</span></p>
+      <p>Sleep-time compute from Letta (open source), April 2025, established the frame: shift work off the response path into idle periods. Anthropic's Dreaming, research preview since May 2026 and still in preview in October, applies it to memory curation across sessions and across a team of agents. <span class="pill p-ship">Shipped, research preview</span></p>
     </div>
   </div>
 
@@ -896,9 +918,11 @@ html[data-theme="dark"]{
 
   <h3 id="what-dreaming-actually-does-to-a-memory-store"><a class="anchor" href="#what-dreaming-actually-does-to-a-memory-store" aria-label="Link to this section">#</a>What Dreaming actually does to a memory store</h3>
 
-  <p>Worth being precise, because the name invites overreading. It does not touch model weights. It is a scheduled asynchronous job that reads a batch of prior session transcripts plus the existing memory and emits a reorganized memory store, leaving the inputs intact so a team can approve, reject, or modify before deployment. Runs take minutes rather than hours, which is what makes an overnight or off-peak cadence practical. The four operations are merge duplicates, drop entries that have gone stale, promote a recurring pattern from many episodic events into one stable statement, and restructure for signal.</p>
+  <p>Worth being precise, because the name invites overreading. It does not touch model weights. It is an asynchronous job, usually run on a schedule, that reads an existing memory store plus one to a hundred prior session transcripts and emits a reorganized memory store. By default it leaves the inputs intact so a team can review the output before attaching it to future sessions, and an optional instruction field steers what the pass concentrates on. <span class="upd">Correction</span>The July version of this note said runs take minutes rather than hours. Anthropic&rsquo;s guide now says minutes to a few hours, scaling with the number of transcripts, so an overnight cadence is practical and an hourly one may not be. The operations are merge duplicates, replace stale or contradicted entries with the latest value, promote a recurring pattern from many episodic events into one stable statement, and restructure for signal.</p>
 
   <p>The third operation is the interesting one and the risky one. Promoting "asked about pivot tables six times" into "struggles with pivot tables" is exactly what schema formation looks like in biology, and exactly what a false generalization looks like in production. There is no scoring step that asks whether the promoted statement improved anything afterward.</p>
+
+  <p><span class="upd">Oct 2026</span>That risk now has a measurement. A May 2026 study of continuously updated LLM memory banks (arXiv 2605.12978) found that memory helped at first and then got worse as consolidation repeated, in some cases ending below the score with no memory at all. Even when consolidating from ground-truth solutions, GPT-5.4 failed on 54 percent of a set of ARC-AGI problems it had solved without memory. The authors trace the regression to the consolidation step rather than the experience, and an episodic-only control that simply kept the raw trajectories stayed competitive. That is Complementary Learning Systems argued from data: keep the episodes as evidence and gate the generalization. It also makes the attribution harness in tab four a requirement rather than an option.</p>
 
   <h3 id="status-board"><a class="anchor" href="#status-board" aria-label="Link to this section">#</a>Status board</h3>
 
@@ -908,32 +932,33 @@ html[data-theme="dark"]{
       <caption>Agent psychiatry, by state of the art</caption>
       <thead><tr><th>Capability</th><th>State</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td class="imp"><strong>Context engineering</strong></td><td><span class="pill p-ship">Established primitive</span></td><td class="bio">A named discipline with a settled taxonomy: write, select, compress, isolate. Karpathy's framing of the context window as RAM did most of the conceptual work.</td></tr>
+        <tr><td class="imp"><strong>Context engineering</strong></td><td><span class="pill p-ship">Established primitive</span></td><td class="bio">A named discipline with a settled taxonomy: write, select, compress, isolate. Karpathy's framing of the context window as RAM did most of the conceptual work. Since July, compaction on demand (Claude API beta) lets the client choose when to compact and keep recent turns verbatim.</td></tr>
         <tr><td class="imp"><strong>Retrieval</strong></td><td><span class="pill p-ship">Established primitive</span></td><td class="bio">Mature, and now understood to need hybrids rather than embeddings alone as corpora grow: grep, structured search, graph traversal, reranking.</td></tr>
-        <tr><td class="imp"><strong>Tool use and orchestration</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Lead-and-subagent patterns in parallel on shared state, public beta. A cheap model fields and delegates, expensive models draft.</td></tr>
-        <tr><td class="imp"><strong>Persistent scoped memory</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Organizational stores everyone reads, working stores per task or team, exposed through an API outside the agent runtime.</td></tr>
+        <tr><td class="imp"><strong>Tool use and orchestration</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Lead-and-subagent patterns in parallel on shared state, public beta. A cheap model fields and delegates, expensive models draft. Since July: an advisor model the primary thread can consult mid-turn (August), and agent-written workflow programs that run many agents in phases (beta, October).</td></tr>
+        <tr><td class="imp"><strong>Persistent scoped memory</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Organizational stores everyone reads, working stores per task or team, exposed through an API outside the agent runtime. Since August, stores can be mounted into a customer's self-hosted sandbox and synced back.</td></tr>
         <tr><td class="imp"><strong>Self-grading</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Rubric-based evaluation with a gate. Works well where quality is specifiable in writing.</td></tr>
-        <tr><td class="imp"><strong>Veridical consolidation</strong></td><td><span class="pill p-ship">Shipped</span></td><td class="bio">The NREM job: faithful review, pattern extraction, deduplication, pruning. This is Dreaming and sleeptime agents.</td></tr>
-        <tr><td class="imp"><strong>Cross-agent transfer</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Dreaming surfaces workflows that multiple agents converge on independently, which is genuinely new. Transfer across organizations and across domains is untouched.</td></tr>
-        <tr><td class="imp"><strong>Long-horizon coherence</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Better with compaction and memory, still the dominant failure mode past a few dozen tool calls.</td></tr>
-        <tr><td class="imp"><strong>Memory conflict resolution</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">When two consolidated statements disagree, recency usually wins. Recency is a poor arbiter of truth.</td></tr>
-        <tr><td class="imp"><strong>Recombinative dreaming</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Biology runs two offline jobs. NREM replays faithfully; REM weakens constraints and recombines. Every shipping system is NREM. Nobody runs the counterfactual job, which is where generalization comes from.</td></tr>
-        <tr><td class="imp"><strong>Forgetting as a mechanism</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Every memory product is additive. Deletion is framed as a cost saving. In biology it is the primary metabolic work of rest and the reason schemas generalize.</td></tr>
-        <tr><td class="imp"><strong>Predictive scoring of memory</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">No system asks whether a consolidated statement reduced prediction error on subsequent work. Without that, consolidation is summarization wearing a lab coat.</td></tr>
+        <tr><td class="imp"><strong>Veridical consolidation</strong></td><td><span class="pill p-ship">Shipped</span></td><td class="bio">The NREM job: faithful review, pattern extraction, deduplication, pruning. This is Dreaming and sleeptime agents. Still a research preview at Anthropic in October; the API reference now also offers an in-place mode that writes the result back into the input store.</td></tr>
+        <tr><td class="imp"><strong>Cross-agent transfer</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Dreaming surfaces workflows that multiple agents converge on independently, which is genuinely new. Transfer across organizations and across domains is untouched. Cross-model transfer now has research support: a distilled memory store carried its value across models in both directions (arXiv 2607.22157).</td></tr>
+        <tr><td class="imp"><strong>Long-horizon coherence</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Better with compaction and memory, still the dominant failure mode past a few dozen tool calls. AgingBench (arXiv 2605.26302) adds a longitudinal version: behavioral tests stay clean while factual precision decays over 8 to 200 sessions.</td></tr>
+        <tr><td class="imp"><strong>Memory conflict resolution</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">When two consolidated statements disagree, recency wins, and this is now documented rather than inferred: Dreams replace stale or contradicted entries with the latest value. Recency is a poor arbiter of truth.</td></tr>
+        <tr><td class="imp"><strong>Recombinative dreaming</strong></td><td><span class="pill p-research">Research, not shipped</span></td><td class="bio">Biology runs two offline jobs. NREM replays faithfully; REM weakens constraints and recombines. Every shipping system is NREM, and no product runs the counterfactual job, which is where generalization comes from. The first experimental result arrived in July (arXiv 2607.16256): within-domain consolidation gave no measurable benefit, cross-domain recombination gave a positive one once capacity was adequate, and components that were neutral or harmful alone helped in combination. One preprint, not a product.</td></tr>
+        <tr><td class="imp"><strong>Forgetting as a mechanism</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio"><span class="upd">Correction</span>The July board said every memory product is additive, which tab four already contradicted: delete operations ship in Mem0 (open source), and Dreams drop stale entries. What remains open is forgetting as a learning mechanism governed by evidence. Deletion is still framed as tidying. In biology it is the primary metabolic work of rest and the reason schemas generalize.</td></tr>
+        <tr><td class="imp"><strong>Predictive scoring of memory</strong></td><td><span class="pill p-research">Research, not shipped</span></td><td class="bio">No shipped system asks whether a consolidated statement reduced prediction error on subsequent work. Research now does: MemTrace attributes failures to the upstream memory operation that caused them (tab four), and Auto-Dreamer (arXiv 2605.20616) trains a consolidator with a counterfactual utility term that suppresses memories whose removal costs nothing. Until that step is in production, consolidation is summarization wearing a lab coat.</td></tr>
         <tr><td class="imp"><strong>Non-instrumental exploration</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Every token an enterprise agent emits is goal-conditioned. Stanley and Lehman's argument that objectives are actively deceptive, because stepping stones rarely resemble the goal, has no purchase anywhere in the stack.</td></tr>
-        <tr><td class="imp"><strong>Calibrated stopping</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Agents do not know when they have thought enough, when a plan has failed, or when to ask for help. Tab three argues this is not a cognitive deficit at all.</td></tr>
-        <tr><td class="imp"><strong>Two-system architecture</strong></td><td><span class="pill p-open">Open</span></td><td class="bio">Complementary Learning Systems specifies a fast episodic store and a slow generalizing store with a transfer process between them. Current agents have logs and a vector index, which is one system pretending to be two.</td></tr>
+        <tr><td class="imp"><strong>Calibrated stopping</strong></td><td><span class="pill p-part">Production, immature</span></td><td class="bio">Agents did not know when they had thought enough, when a plan had failed, or when to ask for help. The first has a partial answer in beta: with a task budget the model sees a countdown and wraps up, and a budget that is plainly too small can make it decline the task. Plan failure is still open; an advisor model the agent can consult mid-turn (August) is a first step on asking for help. Tab three argues the remainder is not a cognitive deficit at all.</td></tr>
+        <tr><td class="imp"><strong>Two-system architecture</strong></td><td><span class="pill p-research">Research, not shipped</span></td><td class="bio">Complementary Learning Systems specifies a fast episodic store and a slow generalizing store with a transfer process between them. Current agents have logs and a vector index, which is one system pretending to be two. Research has started on the real thing: Auto-Dreamer is an explicitly two-timescale design derived from CLS, and the May 2026 finding that episodic-only memory stays competitive with consolidators argues for keeping the fast store as evidence.</td></tr>
       </tbody>
     </table>
     </div>
   </div>
 
-  <p class="note"><strong>On this vocabulary.</strong> An earlier version of this board said &ldquo;solved,&rdquo; which was wrong and would have cost the argument its credibility with anyone who builds this for a living. Four states are used instead. <em>Established primitive</em> means the problem has a settled shape and a named discipline. <em>Production, immature</em> means it works in production and its hard cases are open: for persistent memory those are conflict resolution, temporal validity, poisoning, provenance, deletion fidelity, and whether a stored statement is causally useful at all. <em>Experimental</em> tracks the vendor's own label, and it matters that Anthropic calls Dreaming a research preview while Outcomes and multiagent orchestration are public beta. The vendor does not describe this as settled and neither should this brief. <em>Open problem</em> means no shipped implementation.</p>
+  <p class="note"><strong>On this vocabulary.</strong> An earlier version of this board said &ldquo;solved,&rdquo; which was wrong and would have cost the argument its credibility with anyone who builds this for a living. Five states are used instead. <em>Established primitive</em> means the problem has a settled shape and a named discipline. <em>Production, immature</em> means it works in production and its hard cases are open: for persistent memory those are conflict resolution, temporal validity, poisoning, provenance, deletion fidelity, and whether a stored statement is causally useful at all. <em>Experimental</em> tracks the vendor's own label, and it matters that Anthropic calls Dreaming a research preview while Outcomes and multiagent orchestration are public beta. The vendor does not describe this as settled and neither should this brief. <em>Research, not shipped</em>, added in October, means at least one published result and no shipped implementation. <em>Open problem</em> means no shipped implementation and no result specific to agents of this kind.</p>
 
   <h3 id="the-risk-the-frame-creates"><a class="anchor" href="#the-risk-the-frame-creates" aria-label="Link to this section">#</a>The risk the frame creates</h3>
 
   <div class="card accent-red">
     <p>Dreaming is a self-modifying write path into the artifact that governs future behavior. Memory poisoning has been a published attack class for over a year, and a scheduled process that rewrites its own operating instructions overnight is an unusually attractive target: the payload does not need to survive a session, only a consolidation run. The review-before-deploy option exists precisely because of this, and the moment it becomes tedious at scale, teams will turn it off. Set that aside as the security thesis in tab four.</p>
+    <p><span class="upd">Oct 2026</span>The review step is now one parameter from optional. The Dreams API reference offers an <em class="term">update_existing</em> output mode that consolidates the input store in place, while the guide still says the input store is never modified. Both are true of different configurations, and the convenient one removes the step this card depends on.</p>
   </div>
 
   <h3 id="where-psychiatry-runs-out"><a class="anchor" href="#where-psychiatry-runs-out" aria-label="Link to this section">#</a>Where psychiatry runs out</h3>
@@ -956,7 +981,7 @@ html[data-theme="dark"]{
     Read that description, then read an agent trace. Agents loop. They cannot tell when a plan has failed. They pursue a doomed approach with undiminished fluency for forty tool calls. The resemblance is worth taking seriously without being taken as a diagnosis. Missing interior signal is plausibly one important cause of agent perseveration, and it sits alongside poor termination criteria, reward misspecification, unreliable tools, and planners with no representation of their own failure. Damasio&rsquo;s somatic marker hypothesis is also itself contested, with a substantial critical literature on its causal claims. What the frame buys is a candidate cause nobody is currently instrumenting, not a settled explanation.
   </blockquote>
 
-  <p>The agentic equivalent of the mind-body connection is a channel carrying the state of the machinery underneath into the reasoning loop as a drive rather than a log line. Every signal it would need already exists. Every one of them is visible to human operators and invisible to the agent.</p>
+  <p>The agentic equivalent of the mind-body connection is a channel carrying the state of the machinery underneath into the reasoning loop as a drive rather than a log line. Every signal it would need already exists. When this note first ran, it said every one of them was visible to human operators and invisible to the agent. Two exceptions had in fact already shipped, and they are the most useful evidence the argument has received; the panel below marks them.</p>
 
   <div class="vitals">
     <div class="vitals-head">
@@ -965,8 +990,8 @@ html[data-theme="dark"]{
     </div>
     <div class="vital">
       <div class="name">Token burn against budget<small>metabolic load</small></div>
-      <div class="where"><span class="pill p-dash">Billing dashboard</span></div>
-      <div class="should">Shift the policy toward <b>closing and simplifying</b>, the way fatigue narrows a human's ambition for a task rather than informing them of a number.</div>
+      <div class="where"><span class="pill p-inloop">In loop, beta</span></div>
+      <div class="should">Shift the policy toward <b>closing and simplifying</b>, the way fatigue narrows a human's ambition for a task rather than informing them of a number. <span class="upd">Correction</span>Partly built since April 2026, which the July version missed: task budgets inject a running countdown that only the model sees, and the vendor documents it pacing, finishing gracefully, and declining or scoping down when the budget is plainly too small.</div>
     </div>
     <div class="vital">
       <div class="name">Elapsed time against expectation<small>circadian pressure</small></div>
@@ -995,8 +1020,8 @@ html[data-theme="dark"]{
     </div>
     <div class="vital">
       <div class="name">Context saturation<small>directed attention fatigue</small></div>
-      <div class="where"><span class="pill p-dash">Runtime metrics</span></div>
-      <div class="should"><b>Compact deliberately</b> rather than by truncation. Attention Restoration Theory says recovery is a change of attentional mode, not an absence of attention.</div>
+      <div class="where"><span class="pill p-inloop">In loop</span></div>
+      <div class="should"><b>Compact deliberately</b> rather than by truncation. Attention Restoration Theory says recovery is a change of attentional mode, not an absence of attention. <span class="upd">Correction</span>Context awareness has told several Claude models their remaining context after each tool call since Claude Sonnet 4.5 (September 2025). The July version listed this as a runtime metric.</div>
     </div>
     <div class="vital">
       <div class="name">Uncertainty accumulated across steps<small>interoceptive confidence</small></div>
@@ -1005,12 +1030,14 @@ html[data-theme="dark"]{
     </div>
     <div class="vital">
       <div class="name">Cost of being wrong here<small>threat appraisal</small></div>
-      <div class="where"><span class="pill p-none">Not measured</span></div>
-      <div class="should"><b>Change the risk posture.</b> Humans slow down near a cliff without being told the height. Agents do not know they are near one.</div>
+      <div class="where"><span class="pill p-dash">Runtime governor</span></div>
+      <div class="should"><b>Change the risk posture.</b> Humans slow down near a cliff without being told the height. Agents do not know they are near one. <span class="upd">Oct 2026</span>Partly handled from outside: the auto permission policy in Claude Managed Agents evaluates each tool call against the session so far and denies the high-risk ones. The agent is gated, not informed; it learns of the cliff from an error message, which is a reflex arc rather than a sense of the drop.</div>
     </div>
   </div>
 
-  <p>Four of the nine are not measured at all. The other five are measured in the wrong place, for the wrong audience. That is the interoception gap in one panel, and closing it is a tractable engineering project rather than a research program.</p>
+  <p><span class="upd">Correction</span>The July version said four of the nine were not measured at all and the other five were measured in the wrong place, for the wrong audience. Both counts were off. Two now reach the loop in at least one vendor&rsquo;s API (token budget and context saturation), three live in dashboards, one is enforced by a runtime governor the agent cannot feel, and three are not measured anywhere. That is the interoception gap in one panel, and closing the rest is still a tractable engineering project rather than a research program.</p>
+
+  <p>The two that crossed matter more than their count. They show the mechanism behaving the way this tab predicted: a readable, unwritable signal changes policy rather than merely being reported, and the vendor documents the change. And they arrived without the vocabulary. Nobody calls a token countdown interoception, which is why the July census missed it, and why the remaining seven, the ones that do not map onto a billing unit, are still nobody&rsquo;s product.</p>
 
   <div class="card accent-purple">
     <h4>And the regulation target is wrong too</h4>
@@ -1025,7 +1052,7 @@ html[data-theme="dark"]{
 
   <div class="card accent-green">
     <h4>Forgetting is the work, not the loss</h4>
-    <p>This is the single largest unclaimed position in the field. Synaptic downscaling and microglial pruning are expensive, active, targeted deletion, and they are what makes generalization possible: the details you drop are what would otherwise be overfitted. Every agent memory product on the market is additive. Compaction is framed as a cost saving and treated as regrettable. No vendor sells deletion as the product. The first one to ship principled forgetting, with an audit trail of what was dropped and the evidence for dropping it, will look obvious in retrospect and will own a category nobody is currently competing for.</p>
+    <p>This is the single largest unclaimed position in the field. Synaptic downscaling and microglial pruning are expensive, active, targeted deletion, and they are what makes generalization possible: the details you drop are what would otherwise be overfitted. <span class="upd">Correction</span>The July version said every agent memory product is additive; tab four already contradicted that. Delete operations ship, and consolidation jobs drop stale entries as routine. What nobody sells is forgetting as the mechanism: compaction and deletion are still framed as tidying and treated as regrettable. The first vendor to ship principled forgetting, with an audit trail of what was dropped and the evidence for dropping it, will look obvious in retrospect and will own a category nobody is yet competing for.</p>
   </div>
 
   <h3 id="the-census-of-what-is-not-the-agent"><a class="anchor" href="#the-census-of-what-is-not-the-agent" aria-label="Link to this section">#</a>Three. The census of what is not the agent</h3>
@@ -1071,7 +1098,7 @@ html[data-theme="dark"]{
         <tr>
           <td class="imp"><strong>Autophagy</strong></td>
           <td class="bio">An ecology feeding on its own waste products degenerates</td>
-          <td class="bio">Model collapse from training or consolidating on self-generated output. A dreaming process that dreams about previous dreams is exactly this hazard, and it compounds silently</td>
+          <td class="bio">Model collapse from training or consolidating on self-generated output. A dreaming process that dreams about previous dreams is exactly this hazard, and it compounds silently. <span class="upd">Oct 2026</span>Now measured in agent memory: repeated LLM consolidation raised memory utility and then degraded it, in some cases below the no-memory baseline (arXiv 2605.12978)</td>
         </tr>
         <tr>
           <td class="imp"><strong>Antibiotic damage</strong></td>
@@ -1100,6 +1127,7 @@ html[data-theme="dark"]{
 
   <div class="card accent-red">
     <h4>The immunology correction</h4>    <p>Security borrowed the vocabulary of infection and inherited the wrong model with it. Barriers, quarantine, vaccination. But the hard problems in immunology are not exclusion, they are <strong>tolerance</strong> and <strong>autoimmunity</strong>: deciding which residents are self, staying calm about the ones that are, and attacking the ones that turn without attacking the host. An agent's context is full of tolerated foreign material by design. Retrieved documents, tool output, other agents' conclusions, its own consolidated memories. The interesting security question is not how to keep things out. It is how the agent distinguishes self from non-self among the material it has already swallowed, and what it does when a trusted resident starts issuing instructions.</p>
+    <p><span class="upd">Oct 2026</span>A first tolerance rule has shipped, in the runtime rather than the agent. Under Claude Managed Agents&rsquo; auto permission policy, the server takes intent only from the user&rsquo;s own messages: it assesses tool results, fetched pages, MCP responses and messages between agent threads, but does not take instructions from them. Since October the agent&rsquo;s web fetch tool also refuses URLs that reached the session only through tool output, attached documents, the system prompt or the agent&rsquo;s own text. Residents may inform; only the user may instruct. That respects tab one&rsquo;s hard ceiling, because the rule lives where the agent cannot edit it.</p>
   </div>
 
   <h3 id="expression-state-which-the-genome-framing-was-missin"><a class="anchor" href="#expression-state-which-the-genome-framing-was-missin" aria-label="Link to this section">#</a>Three point five. Expression state, which the genome framing was missing</h3>
@@ -1110,6 +1138,7 @@ html[data-theme="dark"]{
   <h3 id="the-endocrine-system-or-global-posture"><a class="anchor" href="#the-endocrine-system-or-global-posture" aria-label="Link to this section">#</a>Four. The endocrine system, or global posture</h3>
   <p>Everything above regulates locally. The endocrine system does the opposite: a gland releases a chemical into general circulation, and every tissue carrying the matching receptor changes behavior at once, on a timescale of minutes to days rather than milliseconds. That is a distinct control regime, and it has no counterpart in agent design.</p>
   <p>Agents are steered almost entirely by local, instantaneous instruction. A prompt adjusts this turn. A tool permission gates this call. There is no slow, diffuse signal that shifts an entire deployment into a different operating posture: raise precision and lower verbosity, narrow tool scope, escalate sooner, prefer the more expensive model, shorten the leash on autonomous write actions, and hold that state for six hours because the assessed risk level changed. What exists instead is a config deploy, which is a different thing: discrete, all-or-nothing, and requiring a human to decide and ship it.</p>
+  <p><span class="upd">Oct 2026</span>The delivery channel has started to arrive without the gland. Mid-conversation system messages (May 2026) and per-message effort changes (beta, September 2026) let a running session change its standing instructions and reasoning depth without a config deploy or a rebuilt prompt cache, and turn-scoped system messages apply for a single turn and then stop costing tokens. What is still missing is the part that decides: no component assesses risk, releases the posture change on its own, holds it, and lets it decay.</p>
 
   <div class="tablewrap">
     <div class="tablescroll">
@@ -1135,7 +1164,7 @@ html[data-theme="dark"]{
         <tr>
           <td class="imp"><strong>Receptor downregulation</strong></td>
           <td class="bio">Persistent high signal causes tissues to reduce receptor density. The message keeps arriving and stops landing</td>
-          <td class="bio">The best-evidenced failure on this page, and it is already happening. Safety and caution language repeated constantly in a system prompt stops modulating behavior. Tolerance is not a metaphor here: it is the observed outcome of a signal that never varies</td>
+          <td class="bio">The best-evidenced failure on this page, and it is already happening. Safety and caution language repeated constantly in a system prompt stops modulating behavior. Tolerance is not a metaphor here: it is the observed outcome of a signal that never varies. <span class="upd">Oct 2026</span>Biology&rsquo;s countermeasure is pulsatile dosing. Continuous GnRH shuts the pituitary response down, which is why continuous agonists are used clinically to suppress the axis, while pulsed delivery preserves it. Turn-scoped system messages make a pulsed caution signal possible; nobody has yet measured whether it resists tolerance</td>
         </tr>
         <tr>
           <td class="imp"><strong>Endocrine disruption</strong></td>
@@ -1157,12 +1186,14 @@ html[data-theme="dark"]{
   <h3 id="the-enteric-nervous-system-and-the-sensory-boundary"><a class="anchor" href="#the-enteric-nervous-system-and-the-sensory-boundary" aria-label="Link to this section">#</a>Six. The enteric nervous system, and the sensory boundary</h3>
   <p>Roughly five hundred million neurons sit in the gut wall, organized into their own plexuses, capable of running peristalsis and local reflexes with the vagus nerve cut. It is a genuinely semi-autonomous nervous system in the periphery, and it reports upward far more than it receives downward. The spinal reflex arc makes the same point more sharply: a hand leaves a hot surface before the brain is informed, because the decision was made two synapses away from the sensor.</p>
   <p>The counterpart is the decision-making that already happens outside the reasoning loop and is not designed as such: retrieval filters, rerankers, guardrail classifiers, tool-side validation, edge gateways, retry logic. These make consequential choices about what the model ever sees, and they are treated as plumbing rather than as cognition. The design question the biology raises is the right one: how much local autonomy belongs in the periphery, what does it escalate, and in which direction does the traffic actually flow. Most agent architecture diagrams show the model at the center commanding outward. The gut suggests the opposite topology is at least as likely to be correct, and the security framing follows from it: a boundary is a sensing organ with local reflexes, not a wall.</p>
+  <p><span class="upd">Oct 2026</span>The periphery is starting to be built as periphery. The auto permission policy evaluates every tool call server-side against the session so far and runs it, denies it, or pauses for a person only when it cannot decide, so traffic escalates upward on uncertainty alone, which is the gut&rsquo;s pattern. Inference hooks (Claude Enterprise beta, August 2026) hold each governed prompt for an organization&rsquo;s own security server before inference proceeds. Both are named and designed as decision points rather than plumbing.</p>
 
   <h3 id="continuous-filtration-and-a-bias-this-brief-had"><a class="anchor" href="#continuous-filtration-and-a-bias-this-brief-had" aria-label="Link to this section">#</a>Seven. Continuous filtration, and a bias this brief had</h3>
   <p>Everything above treats cleanup as an offline batch process, and that is a bias rather than a finding. Sleep is periodic. The kidney is not. It filters continuously, at rest and under load, and an organism that could only clear waste while asleep would not survive the day.</p>
   <p>The architectural contribution is not the continuity, though. It is the <strong>order of operations</strong>, and it inverts how context management currently works. The glomerulus does not decide what to remove. It filters on size and charge alone, passing water and small solutes into the filtrate while retaining cells and large proteins, and it makes no judgment whatever about <em>value</em>. The tubules then <em>reabsorb</em>, and above ninety-nine percent of filtered water is recovered. Selection for worth happens on the rescue, not on the discard.</p>
   <p>Current compaction does the opposite: it decides what to keep and drops the remainder, which means every retention decision is made under the full pressure of a live task by the same process that is trying to complete it. The renal pattern says to invert that. Filter aggressively and by default, then reabsorb against explicit value criteria, and let the two stages be separately tunable and separately auditable. Osmoregulation is the second half: the regulated variable is context pressure and concentration, not merely the removal of waste, which is a different objective from token count.</p>
   <p>Marked honestly: streaming compaction, sliding windows and mid-session pruning all exist. This is not an absent capability. It is an under-theorized one, running on heuristics that nobody has expressed as a two-stage filtration model with a defensible reabsorption policy.</p>
+  <p><span class="upd">Oct 2026</span>The closest shipped move toward separating the stages is compaction on demand (Claude API beta, September 2026): the client chooses when to compact, the summarization can run in the background away from the live task, and recent turns can be kept word for word. That takes the retention decision out from under task pressure, which is half the renal argument. Selection still happens on the discard.</p>
 
   <h3 id="fibrosis-which-is-the-right-name-for-something-every"><a class="anchor" href="#fibrosis-which-is-the-right-name-for-something-every" aria-label="Link to this section">#</a>Eight. Fibrosis, which is the right name for something everyone has seen</h3>
   <p>Acute inflammation recruits immune cells, clears the damage, and resolves. Chronic inflammation does something else: fibroblasts activate, and functional tissue is progressively replaced by stiff, non-functional scar. The organ keeps its shape and loses its compliance, and the process is largely irreversible.</p>
@@ -1172,24 +1203,25 @@ html[data-theme="dark"]{
   <h3 id="bedside-examination-which-is-the-method-the-whole-ta"><a class="anchor" href="#bedside-examination-which-is-the-method-the-whole-ta" aria-label="Link to this section">#</a>Nine. Bedside examination, which is the method the whole tab has been missing</h3>
   <p>Tab two catalogs the failure modes. The panel above catalogs the vitals. Neither of those is a <em>procedure</em>, and internal medicine's actual contribution is not its anatomy, it is its method: presenting complaint, history, physical examination, differential diagnosis, targeted investigation, therapeutic trial, response assessment. Current practice has none of this. An agent fails, the trace is reviewed afterward, and that is an autopsy. The discipline being described here is the one that works on a living patient.</p>
   <p>What that implies operationally is specific. When the vitals go abnormal, before the failure, the response is neither termination nor restart. It is a protocol: isolate the agent from production traffic while keeping it alive, run targeted probes designed to discriminate between candidate causes (retrieval corruption presents differently from context saturation, which presents differently from a poisoned memory, and a probe can separate them), form a diagnosis, apply one intervention, and measure the response before applying a second. One variable at a time, which is the part engineering culture finds hardest.</p>
+  <p><span class="upd">Oct 2026</span>The best support for this section since July is AgingBench (Zhu et al., UT Austin, arXiv 2605.26302), a longitudinal benchmark of roughly 400 runs spanning 8 to 200 sessions across 14 models. Behavioral tests stayed clean while factual precision decayed, and the same wrong answer needed different repairs depending on what the diagnostic profile pointed to. That is a differential diagnosis arrived at empirically, and it is the case for a procedure rather than a restart.</p>
   <p>Two honest problems with this. Observation changes the patient: an agent moved into a diagnostic environment is no longer in the conditions that produced the symptom, and the clinical literature has a name for that class of artifact. And a therapeutic trial requires the pharmacology this tab admits it lacks, because applying one intervention and measuring the response is meaningless without a dose and a half-life. Bedside examination is the right frame and it is downstream of the gap named below.</p>
 
   <h3 id="what-is-still-missing-from-this-tab"><a class="anchor" href="#what-is-still-missing-from-this-tab" aria-label="Link to this section">#</a>What is still missing from this tab</h3>
   <p>Naming the gaps is cheaper than defending a claim of completeness. The largest remaining one is structural rather than anatomical: <strong>there is no pharmacology here.</strong> A document arguing for internal medicine and omitting the discipline of intervention is missing more than any single organ system. Dose and response curves. Half-life, which is the question of how long an intervention persists after you stop applying it. Therapeutic window, meaning the gap between the dose that works and the dose that harms. Interaction effects between simultaneous interventions. Contraindications. Every one of those has an obvious agentic reading, and the field currently ships interventions with none of that vocabulary: a system prompt change has a dose nobody measures, a half-life nobody characterizes, and interactions nobody tests.</p>
-  <p>Also absent, and worth listing rather than quietly skipping: lymphatic drainage and immune trafficking as distinct from circulation; glymphatic clearance, which is the specific mechanism that makes sleep non-negotiable in mammals and therefore the sharpest available argument against treating downtime as discretionary; senescence and aging, because nothing here describes what an old agent deployment looks like or why it degrades; and the microbiome's own development, which in humans is a years-long colonization sequence rather than an inoculation.</p>
+  <p>Also absent, and worth listing rather than quietly skipping: lymphatic drainage and immune trafficking as distinct from circulation; glymphatic clearance, which is the specific mechanism that makes sleep non-negotiable in mammals and therefore the sharpest available argument against treating downtime as discretionary; senescence and aging, now partly answered from outside this note, since AgingBench names four aging mechanisms (compression, interference, revision, and maintenance aging, the last being routine upkeep that silently changes behavior) and shows deployed agents degrading with weights frozen, though that is wear rather than senescence, nothing in it being a programmed limit, which is consistent with tab one placing senescence in register two; and the microbiome's own development, which in humans is a years-long colonization sequence rather than an inoculation.</p>
   <p><strong>One candidate considered and mostly declined.</strong> Oncology, offered as a frame for runaway recursive subagent spawning, is the weakest transfer reviewed for this brief, because the phenomenon it describes already has better-specified engineering vocabulary: depth limits, propagated budget tokens, supervision trees, circuit breakers, cgroups. Relabeling a resource quota as a tumor suppressor loses precision rather than gaining it. One thing does survive, and it is worth stating because it is not about resources at all: a tumor is a cell that passes every self-check. It is genuinely you, which is why it is not rejected. The hard multi-agent failure is not the subagent that violates a rule, it is the population of subagents each behaving correctly under its own local instructions and collectively producing a pathology no quota detects. The related fact is that treatment applies selection pressure, so filtering a behavior selects for the variants that evade the filter. Those two observations belong in a guardrail design conversation. The rest of the oncology frame does not.</p>
 
   <h3 id="what-internal-medicine-would-actually-build"><a class="anchor" href="#what-internal-medicine-would-actually-build" aria-label="Link to this section">#</a>What internal medicine would actually build</h3>
 
   <ol>
-    <li><strong>An interoceptive channel.</strong> The nine vitals above, written into context as pressures that shape policy, not as numbers to be reported. The test of success is that the agent stops on its own.</li>
+    <li><strong>An interoceptive channel.</strong> The nine vitals above, written into context as pressures that shape policy, not as numbers to be reported. The test of success is that the agent stops on its own. Two of the nine exist in one vendor&rsquo;s API; the other seven are the build.</li>
     <li><strong>Two-stage continuous filtration.</strong> Aggressive default clearance of the live context, with a separately tunable and separately auditable reabsorption policy deciding what is rescued. Selection on the rescue, not on the discard.</li>
     <li><strong>A REM job alongside the NREM one.</strong> Constraints relaxed, memory fragments recombined, counterfactual variants of past failures generated, and then everything filtered by a verifier. Generate-then-filter is what separates this from hallucination.</li>
     <li><strong>Principled forgetting with an audit trail.</strong> Every memory carries a predictive-value score, decayed over time, and gets evicted on evidence. What was dropped and why is a queryable record.</li>
     <li><strong>Supply chain health monitoring.</strong> Index freshness, embedding drift, per-tool signal-to-noise, self-generated content share of the corpus. The last of those is the model-collapse early warning and almost nobody tracks it.</li>
     <li><strong>A diagnostic protocol and a place to run it.</strong> Probes that discriminate between candidate causes, one intervention at a time, response measured before the next. This is the item with the clearest product shape and the same buyer as the attribution harness in tab four.</li>
     <li><strong>Inheritable expression state.</strong> Posture carried in loaded adapter weights rather than restated instructions, and passed to spawned children automatically. The delivery mechanism the global-posture argument requires.</li>
-    <li><strong>Tolerance policy.</strong> Provenance on every item in context, and a defined posture for what a resident is allowed to instruct.</li>
+    <li><strong>Tolerance policy.</strong> Provenance on every item in context, and a defined posture for what a resident is allowed to instruct. The second half has a first shipped instance in the runtime; provenance on every item has not.</li>
     <li><strong>Controlled dirt exposure.</strong> A development regime that deliberately includes malformed data, degraded tools, and adversarial phrasing, on the hygiene-hypothesis rationale.</li>
   </ol>
 
@@ -1215,7 +1247,7 @@ html[data-theme="dark"]{
     </div>
     <div class="card tight accent-red">
       <h4>The engine is closing</h4>
-      <p>Letta shipped sleep-time compute in April 2025. Anthropic shipped Dreaming in May 2026. Building a better consolidation engine means racing platform vendors who own the traces, the runtime, and the distribution. Do not take that fight.</p>
+      <p>Letta (open source) shipped sleep-time compute in April 2025. Anthropic shipped Dreaming in May 2026, and open-source dreaming with lineage tracking followed in August. Building a better consolidation engine means racing platform vendors who own the traces, the runtime, and the distribution. Do not take that fight.</p>
     </div>
     <div class="card tight accent-red">
       <h4>A generic corpus has no value</h4>
@@ -1229,25 +1261,29 @@ html[data-theme="dark"]{
     <p class="kicker">Position one, and the strongest</p>
     <h4>The attribution harness</h4>
     <p>Everyone is about to run consolidation. Almost nobody will be able to prove which consolidated memory caused which change in outcome, or notice when the process starts degrading performance instead of improving it. Tie every memory entry to the tasks it entered, score it on whether it reduced error, decay the score, and produce a ledger. Sell it as the thing that makes dreaming auditable enough to leave on unattended.</p>
-    <p><strong>This is no longer uncontested, and the brief was wrong to imply it was.</strong> MemTrace (Deng et al., Zhejiang University and Alibaba, arXiv 2605.28732, May 2026) turns memory pipelines into executable memory-evolution graphs, benchmarks failure modes across Long-Context, RAG, Mem0 and EverMemOS, attributes a wrong answer to the specific upstream operation that caused it, and closes the loop by feeding attribution signals into prompt optimization for up to a 7.62 percent end-task gain. Adjacent work has arrived alongside it: MemFail, A-TMA, DynamicMem. Research activity is now dense here. What no one obviously owns yet is the <em>enterprise control plane</em> that unifies causal attribution, deletion governance, and production remediation under one policy engine with approvals and rollback. That is a narrower and more investable claim than novelty, and measurement alone is not the moat, because measurement platforms commoditize. The defensible asset is longitudinal outcome-linked memory data, deep runtime integration, and approval workflows a regulated buyer will accept.</p>
+    <p><strong>This is no longer uncontested, and the brief was wrong to imply it was.</strong> MemTrace (Deng et al., Zhejiang University and Alibaba, arXiv 2605.28732, May 2026) turns memory pipelines into executable memory-evolution graphs, benchmarks failure modes across Long-Context, RAG, Mem0 (open source) and EverMemOS, attributes a wrong answer to the specific upstream operation that caused it, and closes the loop by feeding attribution signals into prompt optimization for up to a 7.62 percent end-task gain. Adjacent work has arrived alongside it: MemFail, A-TMA, DynamicMem. Research activity is now dense here. What no one obviously owns yet is the <em>enterprise control plane</em> that unifies causal attribution, deletion governance, and production remediation under one policy engine with approvals and rollback. That is a narrower and more investable claim than novelty, and measurement alone is not the moat, because measurement platforms commoditize. The defensible asset is longitudinal outcome-linked memory data, deep runtime integration, and approval workflows a regulated buyer will accept.</p>
+    <p><span class="upd">Oct 2026</span>Since July the case for the harness got stronger and the space got more crowded. Consolidation has now been shown to degrade memory on its own (tab two), which turns &ldquo;notice when the process starts making things worse&rdquo; from a hypothetical into the core requirement. Learned consolidators now score memories by counterfactual utility (Auto-Dreamer, arXiv 2605.20616, May 2026), and open-source dreaming preserves lineage through every merge (MindMemOS (open source), arXiv 2608.12428, August 2026). Neither is the enterprise control plane described above, and that remains the gap. The window for owning it is shorter than it looked in July.</p>
   </div>
 
   <div class="card accent-purple">
     <p class="kicker">Position two</p>
     <h4>Memory hygiene and poisoning defense</h4>
     <p>Consolidation is a self-modifying write path into the artifact that governs future behavior, and a payload only has to survive one overnight run to become policy. Review-before-deploy exists in the platform and will be switched off the moment it becomes tedious at scale, which is roughly the second week. The product is automated review: provenance on every proposed memory change, anomaly detection on the diff, and a policy engine for what a consolidation run is allowed to promote. This is a security purchase, which is a better budget than an efficiency purchase.</p>
+    <p><span class="upd">Oct 2026</span>Two developments sharpen this. The review step is now one parameter from optional: the Dreams API reference offers an <em class="term">update_existing</em> output mode that consolidates the input store in place, which is the convenient default the second week will reach for. And the attack research has caught up with the write path. OWASP&rsquo;s Top 10 for agentic applications lists memory and context poisoning as ASI06. MemPoison (Gao et al., arXiv 2607.14651, July 2026) finds that write-time defenses admit records that look benign alone and turn harmful when retrieved together or on a trigger, which is the tumor that passes every self-check from tab three, in memory form. A result reported in August (Karunanidhi, via The Cryptonomist) has poisoning 1.2 percent of a LongMemEval corpus cutting retrieval accuracy from 0.850 to 0.300, with a write-time screen that caught most indirect injections rejecting none of the 360 poisoned memories. The research disagrees on whether provenance weighting is enough (arXiv 2606.22030 finds provenance-derived trust resists overwrite attacks; the August result finds it does not hold alone), and that disagreement is the product opportunity. MAPLE-Guard (arXiv 2608.00426) places a gate at private-to-shared promotion, which is exactly the step a consolidation run performs. Screen the promotion, not just the write.</p>
   </div>
 
   <div class="card accent-green">
     <p class="kicker">Position three</p>
     <h4>Forgetting as a service</h4>
     <p><strong>Correction to an earlier claim.</strong> This brief previously said nobody sells deletion. That is false. Mem0 ships LLM-driven ADD, UPDATE, DELETE and NOOP as production memory operations, and learned deletion is an active research line: Memory-R1 (Yan et al., arXiv 2508.19828, now ACL 2026) trains a memory manager on those four operations with outcome-driven reinforcement learning, with Mem-alpha and memory-as-action following. The accurate gap is not the delete operation. It is <em>deletion governance</em>: evidence for why a specific item went, a lineage record that survives audit, a retention policy expressed in predictive value rather than in days, and a rollback path. Deletion as a learned action optimizes task accuracy. Deletion as a governed process is what a compliance owner can sign. The second one is unbuilt. The incentive argument still holds, since storage and token volume are revenue for incumbents. Three separate buyers: the operations owner who wants lower cost, the quality owner who wants better generalization, and the compliance owner who wants defensible retention. The audit trail is what makes it sellable rather than frightening.</p>
+    <p><span class="upd">Oct 2026</span>Two data points since July. Agents given explicit Retain, Delete and Consolidate actions kept raw episodes by default and doubled the accuracy of forced consolidation (arXiv 2605.12978), which says deletion and consolidation need a governing policy, not a schedule. And MindMemOS (open source) archives obsolete records rather than deleting them, with lineage preserved, which is the reversible kind of forgetting a compliance owner can sign. The governed enterprise version is still unbuilt.</p>
   </div>
 
   <div class="card accent-orange">
     <p class="kicker">Position four</p>
     <h4>Cold-start seeding, or the strain bank</h4>
     <p>This is your corpus idea in the form that works. Not curated art or generic stimulus material, but validated consolidated memory and tool ecologies harvested from mature agents in a specific vertical, transplanted into a new deployment to skip the colonization period. The value is in curation and provenance, the moat is in accumulated donors, and the model is closer to a strain bank or a seed library than a content library. Note the obvious hazard: transplanting a donor's pathologies along with its competence. That hazard is also why the attribution harness in position one is the prerequisite rather than an add-on.</p>
+    <p><span class="upd">Oct 2026</span>The transplant now has cross-model evidence. A frozen-weights agent&rsquo;s distilled memory store carried its value across models in both directions (arXiv 2607.22157, July 2026), so a strain bank does not expire when the model generation turns over. That is register three&rsquo;s replaceable cognition, measured.</p>
   </div>
 
   <h3 id="the-minimum-viable-product-stated-concretely"><a class="anchor" href="#the-minimum-viable-product-stated-concretely" aria-label="Link to this section">#</a>The minimum viable product, stated concretely</h3>
@@ -1271,9 +1307,13 @@ html[data-theme="dark"]{
 
   <p>Worth noting that this appears to have been anticipated. Anthropic put memory behind a standalone API outside the agent system specifically so a business can build its own pipelines around it, scan it for sensitive data, tidy it, or copy it into other systems. That is an explicit anti-lock-in signal, and an open memory format is the right thing for a buyer to demand and the right thing to watch. If open formats win quickly, the custody pitch weakens considerably, which would be a good outcome for buyers and a reason not to build a company whose only thesis is custody.</p>
 
+  <p><span class="upd">Oct 2026</span>The movement since July has mostly favored the buyer. Managed Agents memory stores can now be mounted into a customer&rsquo;s own sandbox and synced back (August 2026), an open agent-state format already exists in Letta&rsquo;s Agent File (open source), and portable memory systems such as MindMemOS (open source) target several agent frameworks at once. This is the outcome the paragraph above said would weaken the custody pitch, and it is weakening it. Custody survives as a governance question, who approved what the company&rsquo;s agents now believe, more than as a lock-in question.</p>
+
   <h3 id="the-workload-underneath"><a class="anchor" href="#the-workload-underneath" aria-label="Link to this section">#</a>The workload underneath</h3>
 
   <p>Unglamorous and worth stating plainly, because it determines who else has a stake. Consolidation requires retaining raw execution traces indefinitely: enormous, unstructured, low value per byte, occasionally decisive. Those traces are cold almost all the time, then read in bulk sequentially on a schedule when the consolidation job runs. The access pattern is write-once, sleep, full scan, repeat. That is a data lifecycle problem with a nightly scan profile, not a database problem, and the retention economics are what decide whether an organization can afford to keep enough history for consolidation to find anything.</p>
+
+  <p><span class="upd">Oct 2026</span>One change makes the point concrete. Since October the platform exports Messages API and Managed Agents traces through OpenTelemetry (open source), in beta, to whatever observability backend the customer runs. Where the traces land is now the customer&rsquo;s choice, which makes their retention economics the customer&rsquo;s problem.</p>
 
   <h3 id="the-pitch-by-audience"><a class="anchor" href="#the-pitch-by-audience" aria-label="Link to this section">#</a>The pitch, by audience</h3>
 
@@ -1297,14 +1337,15 @@ html[data-theme="dark"]{
   <ul>
     <li><strong>The lift is really prompt quality.</strong> If consolidation gains turn out to be mostly better instructions discovered by accident, the product is a prompt optimizer and the biology was decoration.</li>
     <li><strong>The predictability constraint binds hard.</strong> Offline compute pays only when future queries are somewhat predictable from existing context. If real enterprise query distributions are less predictable than benchmark ones, the arbitrage never amortizes and every number in tab two is a benchmark artifact.</li>
-    <li><strong>Platform vendors ship attribution natively.</strong> The measurement moat is the best position here and the most obviously absorbable. Assume eighteen to twenty-four months.</li>
-    <li><strong>Weight-level learning arrives.</strong> Dreaming deliberately does not touch weights. If continual fine-tuning on execution traces becomes safe and cheap, memory curation becomes a transitional technology and the whole category compresses.</li>
+    <li><strong>Platform vendors ship attribution natively.</strong> The measurement moat is the best position here and the most obviously absorbable. Assume eighteen to twenty-four months. <span class="upd">Oct 2026</span>Three months in: not yet. What shipped is observability (trace export, a redesigned session inspector), not memory attribution.</li>
+    <li><strong>Weight-level learning arrives.</strong> Dreaming deliberately does not touch weights. If continual fine-tuning on execution traces becomes safe and cheap, memory curation becomes a transitional technology and the whole category compresses. <span class="upd">Oct 2026</span>Not in production. Research interest is rising (NeurIPS 2026 has a workshop on test-time continual learning agents), while frozen-weights results keep raising the value of external memory in the meantime.</li>
     <li><strong>Forgetting turns out to be dangerous in practice.</strong> Deletion is irreversible and audit regimes hate it. If the compliance answer is always keep everything, principled forgetting becomes a shadow index rather than a product.</li>
+    <li><strong>Consolidation turns out to be net-negative at scale.</strong> <span class="upd">Oct 2026</span>Added in this revision. If repeated consolidation degrades memory below baseline as a rule rather than in particular regimes, as the May 2026 ARC-AGI result suggests it can, the sleep therapy in tab two is a hazard and the market is for gating it. That falsifies the therapy, not the harness: it is the strongest argument yet for position one and the worst news for anyone selling better dreams.</li>
   </ul>
 
   <hr class="rule">
 
-  <p>The through-line: the field spent three years building the mind and has not started on the body. The interoception gap explains the failure mode everyone already complains about, forgetting is the mechanism everyone has miscategorized as a cost, and the microbiome is a real ecology that no operator currently manages as one. None of the three requires new research to begin. All three require taking the biology seriously enough to notice that the nervous system is not the whole organism.</p>
+  <p>The through-line: the field spent three years building the mind and has barely started on the body, and the first two interoceptive signals it did build shipped under other names. The interoception gap explains the failure mode everyone already complains about, and the budget countdown is the first evidence that closing it changes behavior. Forgetting is the mechanism everyone has miscategorized as a cost, and the evidence that unscored consolidation degrades memory is now published. The microbiome is a real ecology that no operator currently manages as one. None of the three requires new research to begin. All three require taking the biology seriously enough to notice that the nervous system is not the whole organism.</p>
 
 </section>
 
@@ -1313,7 +1354,8 @@ html[data-theme="dark"]{
 
 <footer>
   <div class="wrap">
-    <p>Sourcing: sleep-time compute figures from Lin et al. (Letta and UC Berkeley, April 2025). Dreaming behavior, the Harvey and Wisedocs figures, and the memory API design from Anthropic's Claude Managed Agents launch material and Code with Claude 2026 coverage, May 2026. Neuroscience references as named in text. Fidelity verdicts in tab one and the evidence classes throughout are this brief's own judgments, not citations. Claims are marked by evidence class in place of a blanket disclaimer; verified against primary sources on 24 July 2026, and the vendor-status items in tab two are the ones most likely to have moved since.</p>
+    <p>Sourcing: sleep-time compute figures from Lin et al. (Letta and UC Berkeley, April 2025). Dreaming behavior, the Harvey and Wisedocs figures, and the memory API design from Anthropic's Claude Managed Agents launch material and Code with Claude 2026 coverage, May 2026. October 2026 revision: Claude Platform documentation and release notes for Dreams, task budgets, context awareness, session budgets, permission policies, compaction on demand, mid-conversation system messages, inference hooks and OpenTelemetry export; arXiv 2605.12978 (consolidation decay), 2605.20616 (Auto-Dreamer), 2605.26302 (AgingBench), 2606.22030 (provenance-capped poisoning defense), 2607.14651 (MemPoison), 2607.16256 (cross-domain recombination), 2607.22157 (frozen-weights continual learning), 2608.00426 (MAPLE-Guard) and 2608.12428 (MindMemOS); the Karunanidhi poisoning result as reported by The Cryptonomist, August 2026, without a located primary record. Neuroscience and endocrinology references as named in text. Fidelity verdicts in tab one and the evidence classes throughout are this brief's own judgments, not citations. Claims are marked by evidence class in place of a blanket disclaimer; first verified against primary sources on 24 July 2026 and re-verified on 19 October 2026. Vendor-status items remain the ones most likely to move.</p>
+    <p class="verstamp">Agent Internal Medicine — v2.0 · build 2026-10-19T00:32-04:00 · supersedes v1.0 (24 July 2026, unversioned). Changes in v2: two interoceptive signals found already shipped and the vitals panel recounted; Dreams documentation re-checked (run time corrected, in-place mode noted); status board moved to five states with research results; internal contradiction on forgetting resolved; new evidence on consolidation decay, memory poisoning, agent aging, tolerance rules and cross-model memory transfer; one falsifier added.</p>
   </div>
 </footer>
 
